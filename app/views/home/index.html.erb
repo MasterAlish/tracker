@@ -1,1 +1,8 @@
 <p>Hello rails!</p>
+
+<%=	form_tag({controller: 'text', action: 'markup'}, :remote=> true, method: :post) do%>
+<%= text_area_tag(:text_for_markup,"", :size => "24x6", placeholder: "Markup text") %>
+<%= submit_tag("Enter") %>
+<% end %>
+
+<div id='markup_result'>asdasd asd asd s</div>

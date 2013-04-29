@@ -17,6 +17,7 @@
 /public/system/*
 .project
 .idea
+/.idea/*
 
 *.rbc
 *.sassc

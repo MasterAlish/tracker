@@ -2,6 +2,8 @@ Tracker::Application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
+  match '/text/markup', to: 'text#markup', via: :post
+
 
 
   # The priority is based upon order of creation:
