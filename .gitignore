@@ -13,3 +13,20 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/public/system/*
+.project
+.idea
+
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/coverage/
+/spec/tmp/*
