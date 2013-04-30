@@ -1,5 +1,6 @@
 Tracker::Application.routes.draw do
   devise_for :users
+  resources :users
 
   root :to => "home#index"
   match '/text/markup', to: 'text#markup', via: :post
