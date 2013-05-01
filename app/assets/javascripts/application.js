@@ -17,11 +17,13 @@
 //= require jquery-hotkeys
 
 $(document).ready(function(){
-    $("#editor1").on('keyup',null,'ctrl+1',function(){
+    $("#editor1").on('keydown',null,'ctrl+b meta+b',function(){
         wrapText('editor1',"'''","'''");
+        return false;
     });
-    $("#editor1").on('keyup',null,'ctrl+2',function(){
+    $("#editor1").on('keydown',null,'ctrl+i meta+i',function(){
         wrapText('editor1',"''","''");
+        return false;
     });
 })
 
