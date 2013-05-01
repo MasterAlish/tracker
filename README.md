@@ -13,16 +13,16 @@ rails s<br/>
 Requires Ruby 2.0.0 or later to run.
 
 
-=wiki text=
+##wiki text
 
-===Shorcuts===
-ctrl+b, cmd+b - strong
+####Shorcuts
+ctrl+b, cmd+b - strong<br/>
 ctrl+i, cmd+i - italic
 
-===Short-links===
+####Short-links
 
-#234 - link to /ticket/234 (#234)
-$[https://bitbucket/..] - link to commit in bitbucket (bb#commit)
-$[https://github/..] - link to commit in github (gh#commit)
+\#234 - link to /ticket/234 (#234)<br/>
+$[https://bitbucket/..] - link to commit in bitbucket (bb#commit)<br/>
+$[https://github/..] - link to commit in github (gh#commit)<br/>
 
 for other features look https://wincent.com/products/wikitext/doc/
