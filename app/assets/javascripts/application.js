@@ -14,3 +14,23 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require jquery-hotkeys
+
+$(document).ready(function(){
+    $("#editor1").on('keyup',null,'ctrl+1',function(){
+        wrapText('editor1',"'''","'''");
+    });
+    $("#editor1").on('keyup',null,'ctrl+2',function(){
+        wrapText('editor1',"''","''");
+    });
+})
+
+function wrapText(elementID, openTag, closeTag) {
+    var textArea = $('#' + elementID);
+    var len = textArea.val().length;
+    var start = textArea[0].selectionStart;
+    var end = textArea[0].selectionEnd;
+    var selectedText = textArea.val().substring(start, end);
+    var replacement = openTag + selectedText + closeTag;
+    textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+}
