@@ -1,5 +1,6 @@
 Tracker::Application.routes.draw do
-  devise_for :users
+
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :users
 
   root :to => "home#index"

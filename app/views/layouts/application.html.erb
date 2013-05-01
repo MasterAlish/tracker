@@ -2,18 +2,17 @@
 <html>
 <head>
   <title>Tracker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header' %>
 <div class="container">
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+  <%= debug(params) if Rails.env.development? %>
 </div>
-<%= render 'layouts/footer' %>
-<%= debug(params) if Rails.env.development? %>
-
 </body>
 </html>
