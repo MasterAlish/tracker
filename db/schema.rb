@@ -11,7 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501080957) do
+ActiveRecord::Schema.define(:version => 20130505101715) do
+
+  create_table "access_credentials", :force => true do |t|
+    t.text     "properties"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "type"
+    t.integer  "task_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "clients", :force => true do |t|
+    t.string   "name"
+    t.text     "emails"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "email_threads", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "properties", :force => true do |t|
+    t.string   "name"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +61,47 @@ ActiveRecord::Schema.define(:version => 20130501080957) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "sites", :force => true do |t|
+    t.string   "url"
+    t.integer  "client_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "task_states", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "task_types", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "ticket_id"
+    t.float    "quoted_time"
+    t.float    "real_time"
+    t.text     "content"
+    t.integer  "task_state"
+    t.integer  "task_type_id"
+    t.integer  "quoted_by"
+    t.integer  "done_by"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "name"
+    t.integer  "client_id"
+    t.integer  "site"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
