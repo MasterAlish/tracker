@@ -2,7 +2,7 @@ Tracker::Application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :users
-
+  resources :tickets
   root :to => "home#index"
   match '/text/markup', to: 'text#markup', via: :post
 
