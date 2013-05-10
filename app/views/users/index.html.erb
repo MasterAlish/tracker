@@ -1,19 +1,33 @@
 <h1>Users </h1>
+<div class="navbar">
+    <%= link_to(new_user_invitation_path, class: "btn btn-small") do %>
+        <i class="icon-plus-sign"></i> Invite new User
+    <% end %>
+</div>
 
-<table>
+<table class="table-striped table table-hover table-condensed">
   <thead>
     <tr>
+        <th>#</th>
         <th>Name</th>
         <th>E-mail</th>
-        <th>Delete</th>
+        <th>Role</th>
+        <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <%@users.each do |user| %>
         <tr>
+          <td><%=user.id %></td>
           <td><%=user.name %></td>
           <td><%=user.email %></td>
-          <td><%=link_to "Delete", user, method: :delete%></td>
+          <td><%=user.roles.first.name unless user.roles.first.nil? %></td>
+          <td>
+            <div class="btn-group">
+              <%= link_to "Edit",  (current_user==user) ? edit_user_registration_path : edit_user_path(user),class: "btn btn-small btn-info" %>
+              <%= (current_user==user) ? "" : (link_to "Delete",user, method: :delete,class: "btn btn-small btn-danger", confirm: "Are you sure?") %>
+            </div>
+          </td>
         </tr>
     <% end %>
   </tbody>
