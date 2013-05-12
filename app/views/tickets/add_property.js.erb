@@ -1,0 +1,5 @@
+var properties =$("#properties");
+properties.children("a").remove();
+properties.append("<%= escape_javascript(render "tickets/properties/new", :id=>@id ) %>")
+properties.append("<%= escape_javascript(render "tickets/properties/add", :id=>Integer(@id)+1 ) %>")
+initPropertiesBehaviour();

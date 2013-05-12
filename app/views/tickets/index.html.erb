@@ -1,1 +1,30 @@
 <h1>Tickets</h1>
+
+<div class="navbar">
+  <%= link_to(new_ticket_path, class: "btn btn-small") do %>
+      <i class="icon-plus-sign"></i> newTicket
+  <% end %>
+</div>
+
+<table class="table-striped table table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Description</th>
+    <th>Client</th>
+    <th>Site</th>
+    <th>Created at</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%@tickets.each do |ticket| %>
+      <tr>
+        <td><%= link_to "##{ticket.id}",ticket %></td>
+        <td><%= ticket.name %></td>
+        <td><%= ticket.client.name unless ticket.client.nil? %></td>
+        <td><%= ticket.site.url unless ticket.site.nil? %> </td>
+        <td><%= time_ago_in_words(ticket.created_at.in_time_zone("Astana")) %> ago</td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

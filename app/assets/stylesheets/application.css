@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+
+.clr{
+    clear: both;
+}
+
+i.color{
+    background-image: url("my-glyphicons.png") !important;
+}
+
+.btn-micro{
+    padding: 2px 2px 0 2px !important;
+    border: none !important;
+    background-image: none !important;
+}

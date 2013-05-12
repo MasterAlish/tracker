@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   before_filter :authenticate_user!
   before_filter :is_admin?, only: [:destroy, :index, :edit]
 
@@ -13,12 +14,6 @@ class UsersController < ApplicationController
     user.destroy
     flash[:warning]= "User deleted successfully"
     redirect_to users_path
-  end
-
-  def is_admin?
-    unless current_user.has_role? :admin
-        redirect_to root_path
-    end
   end
 
   def edit

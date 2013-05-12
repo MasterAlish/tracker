@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20130505101715) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
-    t.text     "emails"
+    t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

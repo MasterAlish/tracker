@@ -2,10 +2,10 @@ Tracker::Application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :users
+  match '/tickets/add_property', to: 'tickets#add_property'
   resources :tickets
   root :to => "home#index"
   match '/text/markup', to: 'text#markup', via: :post
-
 
 
   # The priority is based upon order of creation:

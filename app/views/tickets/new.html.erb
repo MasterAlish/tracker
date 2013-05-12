@@ -1,0 +1,21 @@
+<%= form_for (@ticket), class: "form-horizontal" do |f| %>
+    <fieldset>
+      <legend>#New Ticket</legend>
+      <div class="left_side">
+          <%= f.label :name, "Description" %>
+          <%= f.text_area :name, maxlength: 100, rows: 3 %>
+
+          <%= f.label :client_id, "Client" %>
+          <%= select_tag("ticket_client_id",options_for_select(Client.all.map {|c| [c.name, c.id]},[@ticket.client.name,@ticket.client.id])) %>
+      </div>
+      
+     <div class="right_side">
+       <div id="properties">
+        <%= render "tickets/properties/add", :id=>1 %>
+       </div>
+     </div>
+      <div class="clr"></div>
+      <%= f.submit %>
+    </fieldset>
+<% end %>
+
