@@ -3,6 +3,6 @@ class Client < ActiveRecord::Base
   has_many :sites
 
   def self.default
-     Client.find_by_email("sahne@gmail.com")#ENV['DEFAULT_CLIENT_EMAIL'])
+     Client.find_by_email(ENV['DEFAULT_CLIENT_EMAIL'])
   end
 end
