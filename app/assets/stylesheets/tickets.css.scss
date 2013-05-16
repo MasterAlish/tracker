@@ -2,21 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// ** HEADER **
+
+#ticket{
+  font-weight: bold;
+  float: left;
+  margin-right: 10px;
+  padding-top: 8px;
+  color: #444;
+  font-size: 32px;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.ticket-description{
+  line-height: 130%;
+  padding-top: 6px;
+  vertical-align: middle;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  float: left;
+  width: 550px;
+}
+
+body.big-header{
+  padding-top: 100px;
+}
+
+body.big-header div.big-header{
+  min-height: 89px;
+}
+
+a.updown{
+  float: right;
+  position: absolute;
+  top:7px;
+  right: 5px;
+}
+
+
 .left_side{
   float: left;
   width: 350px;
 }
 
+.right_side{
+  float: left;
+  width: 480px;
+}
+
+/* Properties */
 .property {
   padding-bottom:10px;
   label{
     font-weight: bold;
   }
-}
-
-.right_side{
-  float: left;
-  width: 480px;
 }
 
 .property_remove{
@@ -53,4 +95,8 @@
       margin-bottom:0;
     }
   }
+}
+
+.legend_buttons{
+  float: right;
 }

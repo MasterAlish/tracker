@@ -66,7 +66,7 @@ function propertyKeyBindings(){
         var div_names =elem.parents('div.property').children('.property_names');
         var prop_id = parseInt(div_names.first().children("input").last().attr('name').match(pat)[1]);
         var id = parseInt(div_names.first().children("input").last().attr('name').match(pat)[2])+1;
-        div_names.append("<input type='text' name='property["+prop_id+"]["+id+"]' /> <br>");
+        div_names.append("<input type='text' name='property_name["+prop_id+"]["+id+"]' /> <br>");
         div_fields.append("<input type='text' name='property_value["+prop_id+"]["+id+"]' /> <br>");
         div_names.first().children("input").last().focus();
         propertyKeyBindings();

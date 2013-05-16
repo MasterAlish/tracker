@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-  <%= render 'layouts/header' %>
+  <%= render content_for?(:ticket_header)? 'tickets/header' : 'layouts/header' %>
   <%= render 'layouts/messages' %>
   <%= yield %>
   <%= render 'layouts/footer' %>

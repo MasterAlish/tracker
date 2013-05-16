@@ -32,6 +32,7 @@ capybara-*.html
 /coverage/
 /spec/tmp/*
 config/application.yml
+todo.note
 
 # Ignore application configuration
 /config/application.yml
