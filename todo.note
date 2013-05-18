@@ -1,6 +1,8 @@
 + after click Add Property -> focus on property name
-. change unbind/bind event sequence to .on()
++ change unbind/bind event sequence to .rebind() (new method)
 + Title Panel height depends on property line count(property panel's height)
 + add Edit Ticket feature
 + add validate for blank Property name
 . add Resolve, Archive, Duplicate buttons for ticket
+. add Sign in form in Home page
+. Move Create/Updat ticket button upper

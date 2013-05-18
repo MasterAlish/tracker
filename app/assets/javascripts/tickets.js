@@ -1,10 +1,19 @@
 $(document).ready(function(){
+    createNewFunctions();
     initPropertiesBehaviour();
 });
 
+function createNewFunctions(){
+    (function($){
+        $.fn.rebind = function(event,handler){
+            $(this).unbind(event);
+            $(this).bind(event,handler);
+        };
+    })(jQuery);
+}
+
 function initPropertiesBehaviour(){
-    $(".property_name").unbind("keyup");
-    $(".property_name").keyup(function(){
+    $(".property_name").rebind('keyup',function(){
         var label = $(this).parents('div.property').children('label').first();
         label.html($(this).val()+"<a class='btn-micro' href='#'><i class='icon-remove color'></i></a>");
         initPropertyRemoving();
@@ -20,40 +29,35 @@ function initPropertiesBehaviour(){
         }
         return false;
     }
-    $(".property_remove>a").unbind("click");
-    $(".property_remove>a").click(remove_last_element_of_property);
+    $(".property_remove>a").rebind('click',remove_last_element_of_property);
 
     propertyKeyBindings();
     initPropertyRemoving();
 }
 
 function initPropertyRemoving(){
-    $(".property .btn-micro").unbind("click");
-    $(".property .btn-micro").click(function(){
+    $(".property .btn-micro").rebind('click',function(){
         $(this).parents(".property").remove();
     });
 }
 
 
 function propertyKeyBindings(){
-    $(".property_names input").unbind("keypress");
-    $(".property_fields input").unbind("keypress");
-
-    $(".property_names input").keypress(function(e){
+    $(".property_names input").rebind('keypress',function(e){
         if((e.keyCode || e.which) == 13){
             focus_on_next_property_field($(this));
             return false;
         }
     });
 
-    $(".property_names input").keydown(function(e){
+    $(".property_names input").rebind('keydown',function(e){
         if((e.keyCode || e.which) == 9){
             focus_on_next_property_field($(this));
             return false;
         }
     });
 
-    $(".property_fields input").keypress(function(e){
+    $(".property_fields input").rebind('keypress',function(e){
         if((e.keyCode || e.which) == 13){
             new_property_name($(this));
             return false;
