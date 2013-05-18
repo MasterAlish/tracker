@@ -22,7 +22,7 @@
           <div class="clr"></div>
         <div class="part">
           <% @properties.each do |property|%>
-              <div><b><%=property[:name]%>:</b> <%=property[:format]%></div>
+              <div><b><%=property[:name]%><%=':' unless property[:format].blank? %></b> <%=property[:format]%></div>
           <% end %>
         </div>
       </div>

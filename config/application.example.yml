@@ -5,3 +5,5 @@ ADMIN_EMAIL: masterAdmin@gmail.com
 ADMIN_PASSWORD: masteradmin
 ROLES: [admin, developer, tester]
 DEFAULT_ROLE: developer
+DEFAULT_CLIENT_EMAIL: professorX@mailinator.com
+DEFAULT_CLIENT_NAME: ProfessorX

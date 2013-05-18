@@ -13,17 +13,22 @@ class TicketsController < ApplicationController
   end
 
   def create
-    client = Client.find(params[:ticket_client_id])
-    properties =[]
-    params[:property_name].each do |id,property_fields|
-      property = Property.new(name: params[:property_value][id]['1'])
-      property_fields.each do |key,field|
-        property.data[field]=params[:property_value][id][key] unless field.eql? 'name'
-      end
-      properties<<property
-    end
-    @ticket = Ticket.create(client: client, name: params[:ticket][:name], properties: properties)
+    collect_ticket_params
+    @ticket = Ticket.create(client: $client, name: params[:ticket][:name], properties: $properties)
+    format_properties
     render 'show'
+  end
+
+  def update
+    collect_ticket_params
+    @ticket = Ticket.update(params[:id],client: $client, name: params[:ticket][:name], properties: $properties)
+    format_properties
+    render 'show'
+  end
+
+  def edit
+    @ticket = Ticket.find(params[:id])
+    render 'new'
   end
 
   def show
@@ -40,6 +45,18 @@ class TicketsController < ApplicationController
   end
 
   private
+
+    def collect_ticket_params
+      $client = Client.find(params[:ticket_client_id])
+      $properties =[]
+      params[:property_name].each do |id,property_field_names|
+        property = Property.new(name: params[:property_value][id]['1'].squeeze(' ').strip)
+        property_field_names.each do |num,name|
+          property.data[name]=params[:property_value][id][num] unless name.eql? 'name'
+        end
+        $properties<<property
+      end
+    end
 
     def format_properties
       @properties=[]

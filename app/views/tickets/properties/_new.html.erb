@@ -1,12 +1,24 @@
 <div class="property">
-    <label for="property_names">Property<%=id%> <a class="btn-micro" href="#"><i class="icon-remove color"></i></a></label>
+  <% property= Property.new() if property.nil? %>
+  <% id= nil if id.nil? %>
+    <label for="property_names"><%= property.name || "Property#{id}"%> <a class="btn-micro" href="#"><i class="icon-remove color"></i></a></label>
     <div class="property_names">
-      <input type="text" name="property_name[<%=id%>][1]" value="name" readonly/> <br>
-      <input type="text" name="property_name[<%=id%>][2]" value="format" readonly/> <br>
+      <input type="text" name="property_name[<%=property.id || id%>][1]" value="name" readonly/> <br>
+      <input type="text" name="property_name[<%=property.id || id%>][2]" value="format" readonly/> <br>
+      <% unless property.nil? %>
+        <% property.data.except('format').keys.each_with_index do |name, index| %>
+          <input type="text" name="property_name[<%=property.id || id%>][<%=index+3%>]" value="<%=name%>" /> <br>
+        <% end %>
+      <% end %>
     </div>
     <div class="property_fields">
-      <input type="text" name="property_value[<%=id%>][1]" maxlength="25" class="property_name" value="Property<%=id%>" /> <br>
-      <input type="text" name="property_value[<%=id%>][2]" value="" placeholder="ex:{host}:{port}"/> <br>
+      <input type="text" name="property_value[<%=property.id || id%>][1]" maxlength="25" required class="property_name" value="<%=  property.name || "Property#{id}"%> " /> <br>
+      <input type="text" name="property_value[<%=property.id || id%>][2]" value="<%=property.data['format'] || '' %>" placeholder="ex:{host}:{port}"/> <br>
+      <% unless property.nil? %>
+          <% property.data.except('format').keys.each_with_index do |name, index| %>
+              <input type="text" name="property_value[<%=property.id || id%>][<%=index+3%>]" value="<%=property.data[name]%>" /> <br>
+          <% end %>
+      <% end %>
     </div>
     <div class="property_remove">
         <a class="btn btn-mini" href="#"><i class="icon-remove"></i></a>

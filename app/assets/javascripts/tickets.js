@@ -46,6 +46,13 @@ function propertyKeyBindings(){
         }
     });
 
+    $(".property_names input").keydown(function(e){
+        if((e.keyCode || e.which) == 9){
+            focus_on_next_property_field($(this));
+            return false;
+        }
+    });
+
     $(".property_fields input").keypress(function(e){
         if((e.keyCode || e.which) == 13){
             new_property_name($(this));

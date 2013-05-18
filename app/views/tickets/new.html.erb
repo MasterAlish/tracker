@@ -1,6 +1,6 @@
 <%= form_for (@ticket), class: "form-horizontal" do |f| %>
     <fieldset>
-      <legend>#New Ticket</legend>
+      <legend>#<%= @ticket.id || "New Ticket"%></legend>
       <div class="left_side">
           <%= f.label :name, "Description" %>
           <%= f.text_area :name, maxlength: 100, rows: 3 %>
@@ -11,6 +11,9 @@
       
      <div class="right_side">
        <div id="properties">
+        <% @ticket.properties.each do |property| %>
+            <%= render "tickets/properties/new", :property=>property  %>
+        <% end %>
         <%= render "tickets/properties/add", :id=>1 %>
        </div>
      </div>

@@ -14,6 +14,7 @@
     <th>Client</th>
     <th>Site</th>
     <th>Created at</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -24,6 +25,11 @@
         <td><%= ticket.client.name unless ticket.client.nil? %></td>
         <td><%= ticket.site.url unless ticket.site.nil? %> </td>
         <td><%= time_ago_in_words(ticket.created_at.in_time_zone("Astana")) %> ago</td>
+        <td>
+          <div class="btn-group">
+            <%= link_to "Edit", edit_ticket_path(ticket),class: "btn btn-small btn-info" %>
+          </div>
+        </td>
       </tr>
   <% end %>
   </tbody>
