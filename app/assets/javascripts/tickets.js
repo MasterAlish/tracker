@@ -1,6 +1,7 @@
 $(document).ready(function(){
     createNewFunctions();
     initPropertiesBehaviour();
+    mailsHideButton();
 });
 
 function createNewFunctions(){
@@ -8,6 +9,13 @@ function createNewFunctions(){
         $.fn.rebind = function(event,handler){
             $(this).unbind(event);
             $(this).bind(event,handler);
+        };
+    })(jQuery);
+
+    (function($){
+        $.fn.swapClass = function(old_class,new_class){
+            $(this).removeClass(old_class);
+            $(this).addClass(new_class);
         };
     })(jQuery);
 }
@@ -82,4 +90,20 @@ function propertyKeyBindings(){
         div_names.first().children("input").last().focus();
         propertyKeyBindings();
     }
+}
+
+function mailsHideButton(){
+    $(".hide_button").click(function(){
+        if($(this).hasClass("icon-chevron-left")){
+            $(this).swapClass("icon-chevron-left", "icon-chevron-right");
+            $(".ticket_content>.left").animate({width:"3%"},500,null);
+            $(".ticket_content>.right").animate({width:"97%"},500,null);
+            $(".ticket_content>.left .content").hide(500);
+        }else{
+            $(this).swapClass("icon-chevron-right", "icon-chevron-left");
+            $(".ticket_content>.left").animate({width:"50%"},500,null);
+            $(".ticket_content>.right").animate({width:"50%"},500,null);
+            $(".ticket_content>.left .content").show(500);
+        }
+    })
 }

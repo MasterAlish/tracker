@@ -15,15 +15,13 @@ class TicketsController < ApplicationController
   def create
     collect_ticket_params
     @ticket = Ticket.create(client: $client, name: params[:ticket][:name], properties: $properties)
-    format_properties
-    render 'show'
+    redirect_to ticket_path(@ticket)
   end
 
   def update
     collect_ticket_params
     @ticket = Ticket.update(params[:id],client: $client, name: params[:ticket][:name], properties: $properties)
-    format_properties
-    render 'show'
+    redirect_to ticket_path
   end
 
   def edit
@@ -55,7 +53,7 @@ class TicketsController < ApplicationController
           property.data[name]=params[:property_value][id][num] unless name.eql? 'name'
         end
         $properties<<property
-      end
+      end unless  params[:property_name].nil?
     end
 
     def format_properties

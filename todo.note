@@ -5,4 +5,7 @@
 + add validate for blank Property name
 . add Resolve, Archive, Duplicate buttons for ticket
 . add Sign in form in Home page
-. Move Create/Updat ticket button upper
++ Move Create/Update ticket button upper
++ Devide Ticket page into 2 parts(Mails | Tasks)
+. On row click go to ticket#show
++ make MailThread window hidable <

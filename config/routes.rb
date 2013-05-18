@@ -2,6 +2,7 @@ Tracker::Application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :users
+  resources :clients, only: [:show,:delete]
   match '/tickets/add_property', to: 'tickets#add_property'
   resources :tickets
   root :to => "home#index"

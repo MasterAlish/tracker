@@ -25,3 +25,7 @@ i.color{
     border: none !important;
     background-image: none !important;
 }
+
+.table tr>td:last-child, .table tr>th:last-child{
+    text-align: right;
+}

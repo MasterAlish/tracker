@@ -1,6 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+  initUpDownHeaderButton()
+  window.chevron_height = $("header .properties").height()
+  $("a.updown").click()
+
 initUpDownHeaderButton = ->
   $("a.updown").click ->
     if $("body").hasClass("big-header")
@@ -24,8 +29,3 @@ initUpDownHeaderButton = ->
       $(this).children("i").addClass "icon-chevron-up"
       setTimeout (->$("header .properties").removeClass "hidden"),200
     return false
-
-$(document).ready ->
-  initUpDownHeaderButton()
-  window.chevron_height = $("header .properties").height()
-  $("a.updown").click()

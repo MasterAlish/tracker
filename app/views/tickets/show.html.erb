@@ -1,7 +1,7 @@
 <% provide(:ticket_header,"100px") %>
-<legend>#<%= @ticket.id%>
+<legend>#<%= @ticket.id%> <%= @ticket.name %>
   <div class="btn-group legend_buttons">
-    <button class="btn ">Edit</button>
+    <%=link_to "Edit", edit_ticket_path(@ticket), class: "btn" %>
     <button class="btn  dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
@@ -11,10 +11,15 @@
   </div>
 </legend>
 
-<label for="ticket_description">Description</label>
-<blockquote id="ticket_description"><%= @ticket.name %></blockquote>
+<div class="ticket_content">
+  <div class="left">
+    <%= render 'tickets/mails' %>
+  </div>
+  <div class="right">
+    <%= render 'tickets/tasks' %>
+  </div>
+</div>
 
-<label for="ticket_client">Client</label>
-<blockquote id="ticket_client"><%= @ticket.client.name %></blockquote>
+<div class="clr"></div>
 
 <%= debug(@ticket.properties) %>
