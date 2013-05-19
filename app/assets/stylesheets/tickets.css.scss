@@ -106,13 +106,17 @@ div.block{
   }
 }
 
+.ticket_row{
+  cursor: pointer;
+}
+
 .ticket_content{
   .left{
-    width: 50%;
+    width: 40%;
     float: left;
   }
   .right{
-    width: 50%;
+    width: 60%;
     float: left;
   }
 }

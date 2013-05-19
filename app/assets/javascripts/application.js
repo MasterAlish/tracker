@@ -17,24 +17,39 @@
 //= require jquery-hotkeys
 
 $(document).ready(function(){
-    $("#editor1").on('keydown',null,'ctrl+b meta+b',function(){
-        wrapText('editor1',"'''","'''");
-        return false;
-    });
-    $("#editor1").on('keydown',null,'ctrl+i meta+i',function(){
-        wrapText('editor1',"''","''");
-        return false;
-    });
+    initTextEditorShortcuts();
+    initPreviewButton();
 })
 
-function wrapText(elementID, openTag, closeTag) {
-    var textArea = $('#' + elementID);
+function initTextEditorShortcuts(){
+    var editor = $(".editor");
+    editor.on('keydown',null,'ctrl+b meta+b',function(){
+        wrapText($(this),"'''","'''");
+        return false;
+    });
+    editor.on('keydown',null,'ctrl+i meta+i',function(){
+        wrapText($(this),"''","''");
+        return false;
+    });
+}
+
+function initPreviewButton(){
+    $(".preview").click(function(){
+        $(this).parents('.task').find(".editor").toggleClass("hidden");
+        $(this).parents('.task').find(".markup_result").toggleClass("hidden");
+        $(this).text($(this).text()=='Preview'?'Edit':'Preview')
+    });
+}
+
+function wrapText(textArea, openTag, closeTag) {
     var len = textArea.val().length;
     var start = textArea[0].selectionStart;
     var end = textArea[0].selectionEnd;
     var selectedText = textArea.val().substring(start, end);
-    var replacement = openTag + selectedText + closeTag;
-    textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+    if(selectedText.length > 0){
+        var replacement = openTag + selectedText + closeTag;
+        textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+    }
 }
 
 jQuery.expr[':'].regex = function(elem, index, match) {

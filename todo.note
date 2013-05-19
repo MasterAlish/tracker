@@ -4,8 +4,27 @@
 + add Edit Ticket feature
 + add validate for blank Property name
 . add Resolve, Archive, Duplicate buttons for ticket
-. add Sign in form in Home page
++ add Sign in form in Home page (redirect to SignIn if not logged in)
 + Move Create/Update ticket button upper
 + Devide Ticket page into 2 parts(Mails | Tasks)
-. On row click go to ticket#show
++ On row click go to ticket#show
 + make MailThread window hidable <
+. MailThread's window hidden property in the user settings
+. Add avatars to users. Auto set avatar.
+. Lodaing own avatars feature
+. Add task controller and task functionality
+	. Task desing
+		+ New Task button
+		+ Comments and comment owner's design
+		+ Comment preview
+	. Creating, updating, deleting
+	. Attaching files
+	. Showing attached files and images
+	. Commenting feature
+	. Done, Approved and Rejected buttons
+. Mail Threads
+	. Add gmail gem that can work with threads
+	. Add mail design
+. Add Client show action with all his tickets
+. Add Client index, edit, delete actions
+. Add keyboard shortcuts to Quotation selected text and other useful shorcuts

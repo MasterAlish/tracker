@@ -1,0 +1,73 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task{
+  width: 98%;
+  padding-right: 1%;
+  margin-bottom: 15px;
+  padding-left: 1%;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  &.done{
+    box-shadow: 0 0 3px 1px rgb(0, 255, 0);
+  }
+  &.rejected{
+    box-shadow: 0 0 3px 1px rgb(255, 0, 0);
+  }
+  &.new{
+    box-shadow: 0 0 3px 1px rgb(0, 255, 255);
+  }
+  &.desabled{
+    box-shadow: 0 0 3px 1px rgb(0, 0, 0);
+  }
+  &>.content{
+    border-radius: 3px;
+    margin-bottom: 6PX;
+    float: left;
+    margin-top: 4px;
+    padding: 0 4px;
+    width: 90%;
+    &>.message, &>.commenting{
+      &>.avatar{
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin-right: 6px;
+        margin-left: -3px;
+      }
+      &>.owner{
+        font-weight: bold;
+      }
+      &>.text{
+        margin-left: 23px;
+        margin-bottom: 6px;
+      }
+    }
+  }
+  &>.responsible{
+    float: right;
+    width: 42px;
+    background-color: rgb(151, 255, 152);
+    margin-top: 4px;
+    overflow: hidden;
+  }
+  &>.time{
+    float: left;
+    font-size: 12px;
+    font-style: italic;
+    margin-right: 9px;
+    color: rgb(104, 104, 104);
+  }
+  &>.buttons{
+    float: left;
+    font-size: 13px;
+    a{
+      text-decoration: underline;
+    }
+  }
+  &>.quote{
+    float: right;
+    font-weight: bold;
+  }
+}

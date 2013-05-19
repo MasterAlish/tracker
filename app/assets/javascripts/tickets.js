@@ -101,8 +101,8 @@ function mailsHideButton(){
             $(".ticket_content>.left .content").hide(500);
         }else{
             $(this).swapClass("icon-chevron-right", "icon-chevron-left");
-            $(".ticket_content>.left").animate({width:"50%"},500,null);
-            $(".ticket_content>.right").animate({width:"50%"},500,null);
+            $(".ticket_content>.left").animate({width:"40%"},500,null);
+            $(".ticket_content>.right").animate({width:"60%"},500,null);
             $(".ticket_content>.left .content").show(500);
         }
     })

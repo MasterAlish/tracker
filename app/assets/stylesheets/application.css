@@ -29,3 +29,8 @@ i.color{
 .table tr>td:last-child, .table tr>th:last-child{
     text-align: right;
 }
+
+.hidden{
+    display: none;
+    visibility: hidden;
+}

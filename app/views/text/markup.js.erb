@@ -1,1 +1,8 @@
-$('#markup_result').html('<%=j @result_markup  %>')
+var markup_result;
+try{
+    markup_result = window.current_markup_result;
+}catch(err){
+    markup_result = $(".markup_result");
+}
+
+markup_result.html('<%=j @result_markup  %>');
