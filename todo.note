@@ -13,14 +13,17 @@
 . Add avatars to users. Auto set avatar.
 . Lodaing own avatars feature
 . Add task controller and task functionality
-	. Task desing
+	+ Task desing
 		+ New Task button
 		+ Comments and comment owner's design
 		+ Comment preview
-	. Creating, updating, deleting
+	+ Creating
+	. Updating
+	. deleting
 	. Attaching files
 	. Showing attached files and images
-	. Commenting feature
+	+ Commenting feature
+		+ Hide other editors
 	. Done, Approved and Rejected buttons
 . Mail Threads
 	. Add gmail gem that can work with threads
@@ -28,3 +31,4 @@
 . Add Client show action with all his tickets
 . Add Client index, edit, delete actions
 . Add keyboard shortcuts to Quotation selected text and other useful shorcuts
+. Add buttons for Text Editor

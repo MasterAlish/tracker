@@ -6,4 +6,5 @@ class Task < ActiveRecord::Base
   belongs_to :quoted_by, class_name: 'User', foreign_key: 'quoted_by'
   belongs_to :done_by, class_name: 'User', foreign_key: 'done_by'
   has_many :attachments
+  has_many :comments
 end

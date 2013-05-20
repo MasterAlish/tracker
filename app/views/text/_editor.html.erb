@@ -2,16 +2,53 @@
     <%=	form_tag({controller: 'text', action: 'markup'}, :remote=> true, method: :post) do%>
         <div class="btn-toolbar">
           <div class="btn-group">
-              <button class="btn">1</button>
-              <button class="btn">2</button>
+              <button class="btn"><b>B</b></button>
+              <button class="btn"><em>Em</em></button>
               <button class="btn">3</button>
           </div>
           <div class="btn-group actions">
               <button class="btn btn-success preview">Preview</button>
-              <%= submit_tag( defined?(submit) ? submit : 'Comment', class: 'btn btn-primary') %>
+              <%= submit_tag( defined?(submit) ? submit : 'Comment', class: 'btn btn-primary submit-comment') %>
           </div>
         </div>
         <div class="markup_result hidden">asdasd asd asd s</div>
         <%= text_area_tag(:text_for_markup,'', rows:'4', placeholder: defined?(placeholder) ?  placeholder : 'Comment', class: 'editor') %>
     <% end %>
 </div>
+<script type="text/javascript">
+  $(".submit-comment").click(function(){
+      if($(this).val()=='Create'){
+          $.ajax({
+              dataType:'script',
+              url:'/tasks',
+              method: 'POST',
+              data: {'text':$(this).parents('form').children('textarea').val(),'ticket':$("#ticket_id").text()},
+              statusCode: {
+                  200: function(data) {
+                      location.reload();
+                  },
+                  default: function(){
+                      alert("Server Error!");
+                  }
+              }
+          })
+      }else{
+          $.ajax({
+              dataType:'script',
+              url:'/comments',
+              method: 'POST',
+              data: {'text':$(this).parents('form').children('textarea').val(),
+                     'ticket':$("#ticket_id").text(),
+                     'task':$(this).parents('.content').children('input').first().val()},
+              statusCode: {
+                  200: function(data) {
+                      location.reload();
+                  },
+                  default: function(){
+                      alert("Server Error!");
+                  }
+              }
+          })
+      }
+  })
+</script>

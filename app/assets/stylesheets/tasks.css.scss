@@ -38,10 +38,23 @@
       }
       &>.owner{
         font-weight: bold;
+        float: left;
+        margin-right: 9px;
+        &.only{
+          float:none;
+        }
+      }
+      &>.time{
+        font-size: 13px;
+        color: rgb(104, 104, 104);
       }
       &>.text{
         margin-left: 23px;
         margin-bottom: 6px;
+        p{
+          font-size: 14px;
+          line-height: 18px;
+        }
       }
     }
   }

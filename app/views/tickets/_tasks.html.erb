@@ -1,9 +1,9 @@
 <div class="block">
   <div class="tasks_content">
-    <%= render 'tasks/new' %>
-    <%= render 'tasks/new' %>
-    <%= render 'tasks/new' %>
+    <% @ticket.tasks.each do |task| %>
+        <%= render 'tasks/new', task: task %>
+    <% end %>
   </div>
   <div class="clr"></div>
-  <%= link_to 'New Task','http://www.google.kg', class: 'btn btn-primary btn-small' %>
+  <%= link_to 'New Task', new_task_path, remote: true, class: 'btn btn-primary btn-small' %>
 </div>

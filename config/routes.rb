@@ -5,6 +5,9 @@ Tracker::Application.routes.draw do
   resources :clients, only: [:show,:delete]
   match '/tickets/add_property', to: 'tickets#add_property'
   resources :tickets
+  resources :tasks, only: [:new,:create,:update]
+  resources :comments, only: [:create, :destroy]
+
   root :to => "home#index"
   match '/text/markup', to: 'text#markup', via: :post
 

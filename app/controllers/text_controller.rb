@@ -1,6 +1,6 @@
 class String
   def wiki_markup
-    result=self.gsub(/#(\d+)/, '[/ticket/\1 #\1]')
+    result=self.gsub(/#(\d+)/, '[/tickets/\1 #\1]')
     result=result.gsub(/\$\[([^\]]+bitbucket[^\]]+commits[^\]]+)\]/,'[\1 bb#commit]')
     result.gsub(/\$\[([^\]]+github[^\]]+commit[^\]]+)\]/,'[\1 gh#commit]')
   end

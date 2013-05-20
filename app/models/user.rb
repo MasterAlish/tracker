@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   def get_avatar
-    '1.png'
+    "#{(Random.new_seed%8+1)}.png"
   end
 end

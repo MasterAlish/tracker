@@ -1,17 +1,23 @@
 <div class="task">
   <div class='content'>
-    <div class="message">
-       <img class="avatar" src="/assets/avatars/1.png">
-       <div class="owner">Master Alisher</div>
-       <div class="text">
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-       </div>
-    </div>
+    <% if defined?(task) %>
+        <% task.comments.each do |comment| %>
+            <input type="hidden" name="task_id" value="<%=task.id%>"/>
+            <div class="message">
+               <img class="avatar" src="/assets/avatars/<%=comment.user.get_avatar %>">
+               <div class="owner"><%=link_to comment.user.name, user_path(comment.user)%></div>
+               <div class="time">(<%=time_ago_in_words(comment.created_at.in_time_zone("Astana")) %> ago)</div>
+               <div class="text">
+                 <%= comment.content.wiki_markup.to_wikitext  %>
+               </div>
+            </div>
+        <% end %>
+    <% end %>
     <div class="commenting hidden">
       <img class="avatar" src="/assets/avatars/<%= current_user.get_avatar %>">
-      <div class="owner"><%= current_user.name %></div>
+      <div class="owner only"><%= current_user.name %></div>
       <div class="text">
-        <%= render 'text/editor'%>
+        <%= render 'text/editor', submit: defined?(submit) ? submit : 'Comment'%>
       </div>
     </div>
   </div>
@@ -19,7 +25,9 @@
      dasda
   </div>
   <div class="clr"></div>
-  <div class="time">5 hours ago</div>
+  <% if defined?(task) %>
+      <div class="time"><%=time_ago_in_words(task.created_at.in_time_zone("Astana"))%> ago</div>
+  <% end %>
   <div class="buttons">
     <%=link_to 'Comment', '#', class:'new_comment_button' %>
   </div>

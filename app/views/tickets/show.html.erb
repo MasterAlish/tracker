@@ -1,5 +1,5 @@
 <% provide(:ticket_header,"100px") %>
-<legend>#<%= @ticket.id%> <%= @ticket.name %>
+<legend>#<span id="ticket_id"><%= @ticket.id%></span> <%= @ticket.name %>
   <div class="btn-group legend_buttons">
     <%=link_to "Edit", edit_ticket_path(@ticket), class: "btn" %>
     <button class="btn  dropdown-toggle" data-toggle="dropdown">
