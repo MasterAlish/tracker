@@ -7,16 +7,17 @@
               <button class="btn">3</button>
           </div>
           <div class="btn-group actions">
-              <button class="btn btn-success preview">Preview</button>
+              <a class="btn btn-success preview" href="#">Preview</a>
               <%= submit_tag( defined?(submit) ? submit : 'Comment', class: 'btn btn-primary submit-comment') %>
           </div>
         </div>
-        <div class="markup_result hidden">asdasd asd asd s</div>
-        <%= text_area_tag(:text_for_markup,'', rows:'4', placeholder: defined?(placeholder) ?  placeholder : 'Comment', class: 'editor') %>
+        <div class="markup_result hidden"><span style="color: red; text-align: center; font-weight: bold;">Fail!!!</span></div>
+        <%= text_area_tag(:text_for_markup,defined?(text) ? text : '', rows: defined?(rows) ? rows : '4', placeholder: defined?(placeholder) ?  placeholder : 'Comment', class: 'editor') %>
     <% end %>
 </div>
 <script type="text/javascript">
-  $(".submit-comment").click(function(){
+  $(".submit-comment").unbind('click');
+  $(".submit-comment").bind('click', function(){
       if($(this).val()=='Create'){
           $.ajax({
               dataType:'script',
@@ -31,15 +32,16 @@
                       alert("Server Error!");
                   }
               }
-          })
-      }else{
+          });
+          return false;
+      }else if($(this).val()=='Comment'){
           $.ajax({
               dataType:'script',
               url:'/comments',
               method: 'POST',
               data: {'text':$(this).parents('form').children('textarea').val(),
-                     'ticket':$("#ticket_id").text(),
-                     'task':$(this).parents('.content').children('input').first().val()},
+                     'ticket':helpers.getTicketId(),
+                     'task':helpers.getTaskIdByInnerElement($(this))},
               statusCode: {
                   200: function(data) {
                       location.reload();
@@ -48,7 +50,25 @@
                       alert("Server Error!");
                   }
               }
-          })
+          });
+          return false;
+      }else if($(this).val()=='Update'){
+          $.ajax({
+              dataType:'script',
+              url:'/comments/update',
+              method: 'POST',
+              data: {'text':$(this).parents('form').children('textarea').val(),
+                  'comment':helpers.getCommentIdByInnerElement($(this))},
+              statusCode: {
+                  200: function(data) {
+                      location.reload();
+                  },
+                  default: function(){
+                      alert("Server Error!");
+                  }
+              }
+          });
+          return false;
       }
   })
 </script>

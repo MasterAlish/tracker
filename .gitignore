@@ -35,3 +35,6 @@ config/application.yml
 
 # Ignore application configuration
 /config/application.yml
+test
+*.swp
+.DS_Store

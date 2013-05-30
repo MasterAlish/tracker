@@ -10,7 +10,8 @@ module ApplicationHelper
     end
   end
 
-  def correct_user
+  def correct_user(user)
+    current_user == user
   end
 
   def is_admin?

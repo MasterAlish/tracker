@@ -1,14 +1,21 @@
+<% require 'text_controller' %>
+
 <div class="task">
   <div class='content'>
     <% if defined?(task) %>
+        <input type="hidden" name="task_id" value="<%=task.id%>"/>
         <% task.comments.each do |comment| %>
-            <input type="hidden" name="task_id" value="<%=task.id%>"/>
             <div class="message">
-               <img class="avatar" src="/assets/avatars/<%=comment.user.get_avatar %>">
+              <input type="hidden" name="comment_id" value="<%=comment.id%>"/>
+              <img class="avatar" src="/assets/avatars/<%=comment.user.get_avatar %>">
                <div class="owner"><%=link_to comment.user.name, user_path(comment.user)%></div>
-               <div class="time">(<%=time_ago_in_words(comment.created_at.in_time_zone("Astana")) %> ago)</div>
-               <div class="text">
+               <div class="time"> <%=time_ago_in_words(comment.created_at.in_time_zone("Astana")) %> ago <%= "-" if correct_user(comment.user) or current_user.has_role? :admin  %> </div>
+               <div class="editing"> &nbsp; <%= link_to "Edit",'#' if correct_user(comment.user) or current_user.has_role? :admin  %></div>
+               <div class="text result">
                  <%= comment.content.wiki_markup.to_wikitext  %>
+               </div>
+               <div class="text prepare hidden">
+                 <%= render 'text/editor', submit: 'Update', text: comment.content, rows: 10%>
                </div>
             </div>
         <% end %>
@@ -31,6 +38,7 @@
   <div class="buttons">
     <%=link_to 'Comment', '#', class:'new_comment_button' %>
   </div>
-  <div class="quote">3 hours</div>
+  <div class="quote"><%= (link_to defined?(task)&&!task.quoted_time.nil?  ? "#{'%g' % task.quoted_time} hours" : 'Quote','#') %> </div>
+
   <div class="clr"></div>
 </div>

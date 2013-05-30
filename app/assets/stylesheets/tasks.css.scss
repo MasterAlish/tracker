@@ -47,6 +47,15 @@
       &>.time{
         font-size: 13px;
         color: rgb(104, 104, 104);
+        float: left;
+      }
+      &>.editing{
+        font-size: 13px;
+        a{
+          margin-left: 4px;
+          color: rgb(109, 107, 107);
+          float: left;
+        }
       }
       &>.text{
         margin-left: 23px;
@@ -82,5 +91,15 @@
   &>.quote{
     float: right;
     font-weight: bold;
+    &>a{
+      color: black;
+      text-decoration: underline;
+    }
+    .quote_input{
+      width: 30px;
+      margin-bottom: 4px;
+      height: 12px;
+      margin-left: 4px;
+    }
   }
 }

@@ -11,10 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.cookie
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
 //= require bootstrap
 //= require jquery-hotkeys
+//= require log
 
 $(document).ready(function(){
     initTextEditorShortcuts();
@@ -34,10 +37,23 @@ function initTextEditorShortcuts(){
 }
 
 function initPreviewButton(){
-    $(".preview").click(function(){
-        $(this).parents('.task').find(".editor").toggleClass("hidden");
-        $(this).parents('.task').find(".markup_result").toggleClass("hidden");
-        $(this).text($(this).text()=='Preview'?'Edit':'Preview')
+    $(".preview").rebind('click',function(){
+        var preview = $(this);
+        var toggleEditPreview=function(){
+            preview.parents('form').find(".markup_result").toggleClass("hidden");
+            preview.parents('form').find(".editor").toggleClass("hidden");
+            preview.text(preview.text()=='Preview'?'Edit':'Preview');
+        };
+        if(preview.text()=='Preview'){
+            $.post("/text/markup",
+                {'text_for_markup':preview.parents('form').children('textarea').val()},
+                function(marked_up_text){
+                    preview.parents('form').find(".markup_result").html(marked_up_text);
+                    toggleEditPreview();
+            });}else{
+            toggleEditPreview();
+        }
+        return false;
     });
 }
 

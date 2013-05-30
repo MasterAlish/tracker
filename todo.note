@@ -18,7 +18,8 @@
 		+ Comments and comment owner's design
 		+ Comment preview
 	+ Creating
-	. Updating
+	+ quoting
+	. Editing
 	. deleting
 	. Attaching files
 	. Showing attached files and images
@@ -32,3 +33,5 @@
 . Add Client index, edit, delete actions
 . Add keyboard shortcuts to Quotation selected text and other useful shorcuts
 . Add buttons for Text Editor
+
+. Ability for admin write on behalf of client
