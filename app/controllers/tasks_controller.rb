@@ -19,9 +19,14 @@ class TasksController < ApplicationController
     case function
       when 'change_quote'
         change_quote(params[:task], params[:quote])
+      when 'task_done'
+        task_done(params[:id])
+      when 'test_accept'
+        test_accept(params[:id])
+      when 'test_reject'
+        test_reject(params[:id])
       else
     end
-    render :inline => "{'success':true}"
   end
 
   private
@@ -30,5 +35,29 @@ class TasksController < ApplicationController
       task = Task.find(task_id)
       task.quoted_time=quote
       task.save
+      render :inline => "{'success':true}"
+    end
+
+    def task_done(task_id)
+      task = Task.find(task_id)
+      task.done_by = current_user
+      task.quoted_by = nil
+      task.save
+      redirect_to task.ticket
+    end
+
+    def test_accept(task_id)
+      task = Task.find(task_id)
+      task.quoted_by = current_user
+      task.save
+      redirect_to task.ticket
+    end
+
+    def test_reject(task_id)
+      task = Task.find(task_id)
+      task.quoted_by = current_user
+      task.done_by = nil
+      task.save
+      redirect_to task.ticket
     end
 end

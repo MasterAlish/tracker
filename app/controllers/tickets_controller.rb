@@ -1,7 +1,9 @@
 class TicketsController < ApplicationController
   include ApplicationHelper
+  include TicketsHelper
+  before_filter :store_location, except: [:edit, :update]
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :new, :show]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :can_modify,   only: [:edit, :update]
   before_filter :is_admin?, only: [:destroy]
 
   def index
@@ -40,6 +42,13 @@ class TicketsController < ApplicationController
       format.html {head 200}
       format.js
     end
+  end
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy
+    flash[:success] = "Ticket ##{@ticket.id} deleted successfully!"
+    redirect_to tickets_path
   end
 
   private

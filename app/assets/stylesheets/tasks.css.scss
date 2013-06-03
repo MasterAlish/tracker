@@ -70,9 +70,26 @@
   &>.responsible{
     float: right;
     width: 42px;
-    background-color: rgb(151, 255, 152);
     margin-top: 4px;
     overflow: hidden;
+    a{
+      width: 40px;
+      margin-bottom: 5px;
+      padding: 0;
+    }
+    .done, .accepted, .rejected{
+      font-size: 10px;
+      margin-top:5px;
+    }
+    .accepted{
+      color: green;
+    }
+    .done{
+      color:blue;
+    }
+    .rejected{
+      color:red;
+    }
   }
   &>.time{
     float: left;

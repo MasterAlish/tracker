@@ -29,7 +29,18 @@
     </div>
   </div>
   <div class="responsible">
-     dasda
+    <% if task.done_by.nil? %>
+        <%=link_to 'Done',{ controller: 'tasks', action: 'helper', function: 'task_done', id: task.id}, class:'btn btn-mini btn-info' %>
+    <% else %>
+        <i class="icon-th-list color" ></i> <span class='done'>A.A.</span>
+        <% if task.quoted_by.nil? %>
+            <%=link_to 'Accept',{ controller: 'tasks', action: 'helper', function: 'test_accept', id: task.id}, class:'btn btn-mini btn-success' %>
+            <%=link_to 'Reject',{ controller: 'tasks', action: 'helper', function: 'test_reject', id: task.id}, class:'btn btn-mini btn-danger' %>
+        <% else %>
+            <i class="icon-ok color" ></i> <span class='accepted'>A.A.</span>
+        <% end %>
+    <% end %>
+
   </div>
   <div class="clr"></div>
   <% if defined?(task) %>
