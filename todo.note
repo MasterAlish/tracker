@@ -19,6 +19,7 @@
 		+ Comments and comment owner's design
 		+ Comment preview
 	+ Creating
+		. no task variable on creating -> need fix
 	+ quoting
 	+ Editing
 	- deleting
