@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20130520173354) do
     t.text     "content"
     t.integer  "task_state"
     t.integer  "task_type_id"
-    t.integer  "quoted_by"
+    t.integer  "tested_by"
     t.integer  "done_by"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

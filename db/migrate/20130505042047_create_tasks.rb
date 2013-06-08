@@ -7,7 +7,7 @@ class CreateTasks < ActiveRecord::Migration
       t.text :content
       t.integer :task_state
       t.integer :task_type_id
-      t.integer :quoted_by
+      t.integer :tested_by
       t.integer :done_by
 
       t.timestamps

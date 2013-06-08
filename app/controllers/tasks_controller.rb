@@ -41,21 +41,21 @@ class TasksController < ApplicationController
     def task_done(task_id)
       task = Task.find(task_id)
       task.done_by = current_user
-      task.quoted_by = nil
+      task.tested_by = nil
       task.save
       redirect_to task.ticket
     end
 
     def test_accept(task_id)
       task = Task.find(task_id)
-      task.quoted_by = current_user
+      task.tested_by = current_user
       task.save
       redirect_to task.ticket
     end
 
     def test_reject(task_id)
       task = Task.find(task_id)
-      task.quoted_by = current_user
+      task.tested_by = current_user
       task.done_by = nil
       task.save
       redirect_to task.ticket

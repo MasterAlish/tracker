@@ -10,6 +10,9 @@
   border: 1px solid #aaa;
   border-radius: 5px;
   &.done{
+    box-shadow: 0 0 3px 1px rgb(255, 0, 255);
+  }
+  &.accepted{
     box-shadow: 0 0 3px 1px rgb(0, 255, 0);
   }
   &.rejected{
@@ -18,7 +21,7 @@
   &.new{
     box-shadow: 0 0 3px 1px rgb(0, 255, 255);
   }
-  &.desabled{
+  &.disabled{
     box-shadow: 0 0 3px 1px rgb(0, 0, 0);
   }
   &>.content{

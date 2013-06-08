@@ -1,6 +1,6 @@
 <% require 'text_controller' %>
 
-<div class="task">
+<div class="task <% if defined?(task) %><%= task.get_current_state %> <% end %>">
   <div class='content'>
     <% if defined?(task) %>
         <input type="hidden" name="task_id" value="<%=task.id%>"/>
@@ -34,11 +34,11 @@
           <%=link_to 'Done',{ controller: 'tasks', action: 'helper', function: 'task_done', id: task.id}, class:'btn btn-mini btn-info' %>
       <% else %>
           <i class="icon-th-list color" ></i> <span class='done'><%= task.done_by.get_initials %></span>
-          <% if task.quoted_by.nil? %>
+          <% if task.tested_by.nil? %>
               <%=link_to 'Accept',{ controller: 'tasks', action: 'helper', function: 'test_accept', id: task.id}, class:'btn btn-mini btn-success' %>
               <%=link_to 'Reject',{ controller: 'tasks', action: 'helper', function: 'test_reject', id: task.id}, class:'btn btn-mini btn-danger' %>
           <% else %>
-              <i class="icon-ok color" ></i> <span class='accepted'><%= task.quoted_by.get_initials %></span>
+              <i class="icon-ok color" ></i> <span class='accepted'><%= task.tested_by.get_initials %></span>
           <% end %>
       <% end %>
     <% end %>

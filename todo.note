@@ -19,7 +19,7 @@
 		+ Comments and comment owner's design
 		+ Comment preview
 	+ Creating
-		. no task variable on creating -> need fix
+		+ no task variable on creating -> need fix
 	+ quoting
 	+ Editing
 	- deleting
@@ -32,12 +32,12 @@
 		+ After Done, there is tick that indicates that task is done and Two buttons: Accept, Reject
 		+ After Reject, Done button is active again
 		+ After Accept two ticks 
-		. Auto assign clicked user
-	. Frame around task
-		. New - blue
-		. Done - orange
-		. Rejected - red
-		. Accepted - green	
+		+ Auto assign clicked user
+	+ Frame around task
+		+ New - blue
+		+ Done - orange
+		+ Rejected - red
+		+ Accepted - green	
 . Mail Threads
 	. Add gmail gem that can work with threads
 	. Add mail design
@@ -47,3 +47,7 @@
 . Add buttons for Text Editor
 
 . Ability for admin write on behalf of client
+
+. Settings 
+	. is Email Threads block hidden setting
+	. is Ticket Title shown setting

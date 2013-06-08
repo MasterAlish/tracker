@@ -175,7 +175,7 @@
 <text text-anchor="start" x="722.5" y="-316.4" font-family="Times Roman,serif" font-size="14.00">content :text</text>
 <text text-anchor="start" x="722.5" y="-298.4" font-family="Times Roman,serif" font-size="14.00">task_state :integer</text>
 <text text-anchor="start" x="722.5" y="-280.4" font-family="Times Roman,serif" font-size="14.00">task_type_id :integer</text>
-<text text-anchor="start" x="722.5" y="-262.4" font-family="Times Roman,serif" font-size="14.00">quoted_by :integer</text>
+<text text-anchor="start" x="722.5" y="-262.4" font-family="Times Roman,serif" font-size="14.00">tested_by :integer</text>
 <text text-anchor="start" x="722.5" y="-244.4" font-family="Times Roman,serif" font-size="14.00">done_by :integer</text>
 <text text-anchor="start" x="722.5" y="-226.4" font-family="Times Roman,serif" font-size="14.00">created_at :datetime</text>
 <text text-anchor="start" x="722.5" y="-208.4" font-family="Times Roman,serif" font-size="14.00">updated_at :datetime</text>
