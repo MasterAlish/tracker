@@ -32,6 +32,7 @@
 		+ After Done, there is tick that indicates that task is done and Two buttons: Accept, Reject
 		+ After Reject, Done button is active again
 		+ After Accept two ticks 
+		. Auto assign clicked user
 	. Frame around task
 		. New - blue
 		. Done - orange

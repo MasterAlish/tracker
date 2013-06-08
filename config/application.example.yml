@@ -1,6 +1,7 @@
 GMAIL_USERNAME: masters.tracker@gmail.com
 GMAIL_PASSWORD: As34Df56
 ADMIN_NAME: masterAdmin
+ADMIN_INITIALS: MA
 ADMIN_EMAIL: masterAdmin@gmail.com
 ADMIN_PASSWORD: masteradmin
 ROLES: [admin, developer, tester]

@@ -112,7 +112,8 @@ ActiveRecord::Schema.define(:version => 20130520173354) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                :default => "", :null => false
+    t.string   "initials",                             :default => "NN"
+    t.string   "email",                                :default => "",   :null => false
     t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -122,8 +123,8 @@ ActiveRecord::Schema.define(:version => 20130520173354) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.string   "name"
     t.string   "invitation_token",       :limit => 60
     t.datetime "invitation_sent_at"
