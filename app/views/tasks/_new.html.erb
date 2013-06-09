@@ -31,12 +31,12 @@
   <div class="responsible">
     <%  if defined? task %>
       <% if task.done_by.nil? %>
-          <%=link_to 'Done',{ controller: 'tasks', action: 'helper', function: 'task_done', id: task.id}, class:'btn btn-mini btn-info' %>
+          <%=link_to 'Done',{ controller: 'tasks', action: 'helper', function: 'task_done', id: task.id}, class:'btn btn-mini btn-info task_done' %>
       <% else %>
           <i class="icon-th-list color" ></i> <span class='done'><%= task.done_by.get_initials %></span>
           <% if task.tested_by.nil? %>
-              <%=link_to 'Accept',{ controller: 'tasks', action: 'helper', function: 'test_accept', id: task.id}, class:'btn btn-mini btn-success' %>
-              <%=link_to 'Reject',{ controller: 'tasks', action: 'helper', function: 'test_reject', id: task.id}, class:'btn btn-mini btn-danger' %>
+              <%=link_to 'Accept',{ controller: 'tasks', action: 'helper', function: 'test_accept', id: task.id}, class:'btn btn-mini btn-success task_accept' %>
+              <%=link_to 'Reject',{ controller: 'tasks', action: 'helper', function: 'test_reject', id: task.id}, class:'btn btn-mini btn-danger task_reject' %>
           <% else %>
               <i class="icon-ok color" ></i> <span class='accepted'><%= task.tested_by.get_initials %></span>
           <% end %>
@@ -51,7 +51,13 @@
   <div class="buttons">
     <%=link_to 'Comment', '#', class:'new_comment_button' %>
   </div>
-  <div class="quote"><%= (link_to defined?(task)&&!task.quoted_time.nil?  ? "#{'%g' % task.quoted_time} hours" : 'Quote','#') %> </div>
+  <div class="quote">
+    <% if defined? (task) and not task.real_time.nil? %>
+        <span style="color:<%= task.real_time.to_i>task.quoted_time.to_i ? 'red' : 'rgb(0, 200, 0)  ' %>;"><%="#{'%g' % task.real_time} hours"%><sup>real</sup></span> / <%= task.quoted_time.nil? ? '0' : "#{'%g' % task.quoted_time} hours" %>
+    <% else %>
+    <%= (link_to defined?(task)&&!task.quoted_time.nil?  ? "#{'%g' % task.quoted_time} hours" : 'Quote','#') %>
+    <% end %>
+  </div>
 
   <div class="clr"></div>
 </div>

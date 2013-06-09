@@ -93,6 +93,13 @@
     .rejected{
       color:red;
     }
+    .real_time{
+      width: 26px;
+      height: 10px;
+      &.error{
+        box-shadow: 0 0 3px 1px red;
+      }
+    }
   }
   &>.time{
     float: left;

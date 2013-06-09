@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       when 'change_quote'
         change_quote(params[:task], params[:quote])
       when 'task_done'
-        task_done(params[:id])
+        task_done(params[:id], params[:time])
       when 'test_accept'
         test_accept(params[:id])
       when 'test_reject'
@@ -38,8 +38,9 @@ class TasksController < ApplicationController
       render :inline => "{'success':true}"
     end
 
-    def task_done(task_id)
+    def task_done(task_id, spent_time)
       task = Task.find(task_id)
+      task.real_time = spent_time
       task.done_by = current_user
       task.tested_by = nil
       task.save
