@@ -1,0 +1,7 @@
+<legend><%= @client.id || "New Client"%></legend>
+<%= simple_form_for @client do |f| %>
+    <%= f.input :name, :label=>'Full name' %>
+    <%= f.input :email, :placeholder=>'sample@mail.com' %>
+    <%= f.button :submit %>
+<% end %>
+

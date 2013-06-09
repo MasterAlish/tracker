@@ -41,8 +41,8 @@
 . Mail Threads
 	. Add gmail gem that can work with threads
 	. Add mail design
-. Add Client show action with all his tickets
-. Add Client index, edit, delete actions
++ Add Client show action with all his tickets
++ Add Client index, edit, delete actions
 . Add keyboard shortcuts to Quotation selected text and other useful shorcuts
 . Add buttons for Text Editor
 
@@ -51,3 +51,6 @@
 . Settings 
 	. is Email Threads block hidden setting
 	. is Ticket Title shown setting
+
+. Pictures or Emblems
+	. Every type of object must have Picture that will appear in show and index pages

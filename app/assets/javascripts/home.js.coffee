@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(document).ready ->
   initUpDownHeaderButton()
-  setTicketRowClick()
+  setClickableRowClick()
   window.chevron_height = $("header .properties").height()
   $("a.updown").click()
 
@@ -31,7 +31,7 @@ initUpDownHeaderButton = ->
       setTimeout (->$("header .properties").removeClass "hidden"),200
     return false
 
-setTicketRowClick = ->
-  $(".ticket_row").click ->
+setClickableRowClick = ->
+  $(".clickable_row").click ->
     url = $(this).children().first().children("a").attr("href")
     window.location.href = url

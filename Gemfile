@@ -16,6 +16,7 @@ gem 'cancan', '~> 1.6.9'
 gem 'rolify', '~> 3.2.0'
 gem 'figaro', '~> 0.6.3'
 gem 'devise_invitable', '~> 1.1.7'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

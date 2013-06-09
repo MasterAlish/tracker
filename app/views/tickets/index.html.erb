@@ -19,7 +19,7 @@
   </thead>
   <tbody>
   <%@tickets.each do |ticket| %>
-      <tr class="ticket_row">
+      <tr class="clickable_row">
         <td><%= link_to "##{ticket.id}",ticket %></td>
         <td><%= ticket.name %></td>
         <td><%= ticket.client.name unless ticket.client.nil? %></td>

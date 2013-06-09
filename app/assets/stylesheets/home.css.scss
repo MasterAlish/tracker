@@ -98,6 +98,22 @@ p {
   line-height: 1.7em;
 }
 
+.required{
+  abbr{
+    color:red;
+  }
+}
+
+.field_with_errors{
+  .error{
+    color:red;
+    margin-left: 10px;
+  }
+  input{
+      box-shadow: 0 0 3px 1px red;
+  }
+}
+
 
 /* editor */
 
