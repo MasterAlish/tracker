@@ -20,7 +20,8 @@
 		+ Comment preview
 	+ Creating
 		+ no task variable on creating -> need fix
-	+ quoting
+	+ Quoting
+	+ Specifying RealTime after 'Done'
 	+ Editing
 	- deleting
 	. Attaching files
@@ -56,3 +57,6 @@
 
 . Pictures or Emblems
 	. Every type of object must have Picture that will appear in show and index pages
+
+. Change tasks desing to image 
+. Make colors less

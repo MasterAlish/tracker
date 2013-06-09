@@ -8,6 +8,7 @@ Tracker::Application.routes.draw do
   match '/tasks/helper', to: 'tasks#helper'
   resources :tasks, only: [:new,:create,:update]
   resources :comments, only: [:create, :destroy]
+  resources :attachments
   match '/comments/update', to: 'comments#update'
 
   root :to => "home#index"

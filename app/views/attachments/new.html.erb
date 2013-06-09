@@ -1,0 +1,9 @@
+<legend>
+  Add Attachment
+</legend>
+
+<%= form_for @attachment do |f| %>
+    <%= f.file_field :url %>
+    <br>
+    <%= f.submit %>
+<% end %>
