@@ -70,7 +70,7 @@ function initSpentTimeEnteringProcess(){
 }
 
 function initEditButton(){
-    $(".editing").click(function(){
+    $(".editing>a").click(function(){
         helpers.hideAllEditors();
         $(this).parents('.message').children('.result').addClass('hidden');
         $(this).parents('.message').children('.prepare').removeClass('hidden');

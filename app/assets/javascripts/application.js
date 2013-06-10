@@ -34,6 +34,14 @@ function initTextEditorShortcuts(){
         wrapText($(this),"''","''");
         return false;
     });
+    initTextEditorButtons();
+}
+
+function initTextEditorButtons(){
+    var editor = $(".editor_div");
+    editor.find(".btn-upload").rebind('click', function(){
+
+    })
 }
 
 function initPreviewButton(){

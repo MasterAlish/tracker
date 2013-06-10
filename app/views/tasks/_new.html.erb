@@ -10,7 +10,14 @@
               <img class="avatar" src="/assets/avatars/<%=comment.user.get_avatar %>">
                <div class="owner"><%=link_to comment.user.name, user_path(comment.user)%></div>
                <div class="time"> <%=time_ago_in_words(comment.created_at.in_time_zone("Astana")) %> ago <%= "-" if correct_user(comment.user) or current_user.has_role? :admin  %> </div>
-               <div class="editing"> &nbsp; <%= link_to "Edit",'#' if correct_user(comment.user) or current_user.has_role? :admin  %></div>
+               <div class="editing"> &nbsp;
+                 <%= link_to "Edit",'#' if correct_user(comment.user) or current_user.has_role? :admin  %>
+                 <span class="attaching">   <a>-</a>
+                   <%= link_to '#' do  %>
+                    Attach file
+                   <% end if correct_user(comment.user) or current_user.has_role? :admin  %>
+                 </span>
+               </div>
                <div class="text result">
                  <%= comment.content.wiki_markup.to_wikitext  %>
                </div>

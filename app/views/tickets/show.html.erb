@@ -21,3 +21,13 @@
 </div>
 
 <div class="clr"></div>
+
+<div id="upload_dialog" title="Attach file" style="display: none;">
+  <p>
+    <%= form_tag( { :controller=> 'attachments', :action => 'create' }, :multipart => true, :remote=>true) do %>
+        <input type="file" name="attachment[url">
+        <input type="hidden" name="task" id="attachment_task">
+        <input type="submit" value="Add">
+    <% end %>
+  </p>
+</div>

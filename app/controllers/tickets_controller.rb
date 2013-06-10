@@ -34,6 +34,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     format_properties
+    @attachment = Attachment.new
   end
 
   def add_property
