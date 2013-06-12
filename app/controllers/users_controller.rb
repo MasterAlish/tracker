@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!
+  before_filter :signed_in_user
   before_filter :is_admin?, only: [:destroy, :index, :edit]
 
   def index

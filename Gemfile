@@ -18,6 +18,7 @@ gem 'figaro', '~> 0.6.3'
 gem 'devise_invitable', '~> 1.1.7'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'gmail'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

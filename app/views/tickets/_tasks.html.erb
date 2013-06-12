@@ -1,6 +1,6 @@
 <div class="block">
   <div class="tasks_content">
-    <% @ticket.tasks.each do |task| %>
+    <% @ticket.tasks.sort_by{|i| i.created_at}.each do |task| %>
         <%= render 'tasks/new', task: task %>
     <% end %>
   </div>

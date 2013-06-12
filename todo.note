@@ -13,7 +13,7 @@
 . Add avatars to users. Auto set avatar.
 . Lodaing own avatars feature
 +Deleting ticket feature
-. Add task controller and task functionality
++ Add task controller and task functionality
 	+ Task desing
 		+ New Task button
 		+ Comments and comment owner's design
@@ -24,8 +24,10 @@
 	+ Specifying RealTime after 'Done'
 	+ Editing
 	- deleting
-	. Attaching files
-	. Showing attached files and images
+	+ Attaching files
+	+ Showing attached files and images
+		+ show in the text of comment
+		. show thumnails
 	+ Commenting feature
 		+ Hide other editors
 	+ Done, Approved and Rejected buttons
@@ -60,3 +62,4 @@
 
 . Change tasks desing to image 
 . Make colors less
++ Sort tasks by created_at
