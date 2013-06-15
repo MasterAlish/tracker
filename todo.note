@@ -42,7 +42,7 @@
 		+ Rejected - red
 		+ Accepted - green	
 . Mail Threads
-	. Add gmail gem that can work with threads
+	+ Add gmail gem that can work with threads
 	. Add mail design
 + Add Client show action with all his tickets
 + Add Client index, edit, delete actions
