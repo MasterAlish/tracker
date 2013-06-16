@@ -9,6 +9,6 @@ class Client < ActiveRecord::Base
   end
 
   def get_avatar
-    "#{(Random.new_seed%8+1)}.png"
+    "client.png"
   end
 end

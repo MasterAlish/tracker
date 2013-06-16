@@ -5,7 +5,7 @@
       <span class="ticket-description"><%= @ticket.name %></span>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Tickets", tickets_path %></li>
+          <li><%= link_to "Tickets", root_path %></li>
           <% if user_signed_in? %>
               <% if current_user.has_role? :admin %>
                   <li><%= link_to 'Users', users_path %></li>
@@ -21,7 +21,7 @@
       <div class="properties hidden">
           <div class="clr"></div>
         <div class="part">
-          <div><b>Client:</b> <%=link_to @ticket.client.name, client_path(@ticket.client) %></B></div>
+          <div><b>Client:</b> <%= link_to @ticket.client.name, client_path(@ticket.client) %></B></div>
           <% @properties.each do |property|%>
               <div><b><%=property[:name]%><%=':' unless property[:format].blank? %></b> <%=property[:format]%></div>
           <% end %>

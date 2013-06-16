@@ -71,6 +71,32 @@ header .properties{
 .navbar .nav > li > a {
   padding: 10px 10px 10px;
 }
+
+footer{
+  margin-top: 45px;
+  padding-bottom: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+  a{
+    color: #555;
+  }
+  small{
+    float: left;
+  }
+  ul{
+    float: right;
+    list-style: none;
+    li{
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+.account_image{
+  width: 100px;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {

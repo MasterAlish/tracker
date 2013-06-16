@@ -2,7 +2,11 @@ $(document).ready(function(){
     createNewFunctions();
     initPropertiesBehaviour();
     mailsHideButton();
-    $(".hide_button").click();
+
+    $(".hide_button").swapClass("icon-chevron-left", "icon-chevron-right");
+    $(".ticket_content>.left").animate({width:"3%"},0,null);
+    $(".ticket_content>.right").animate({width:"97%"},0,null);
+    $(".ticket_content>.left .content").hide(0);
 });
 
 function createNewFunctions(){

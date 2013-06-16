@@ -6,7 +6,7 @@ $(document).ready ->
   setClickableRowClick()
   initRoadMapCardClick()
   window.chevron_height = $("header .properties").height()
-  $("a.updown").click()
+#  $("a.updown").click()
 
 initUpDownHeaderButton = ->
   $("a.updown").click ->

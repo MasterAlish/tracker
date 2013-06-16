@@ -1,6 +1,6 @@
 <legend>
+  <img class="account_image" src="/assets/avatars/<%=@client.get_avatar%>">
   <b><%= @client.name %></b> (<%= @client.email %>)
-
 </legend>
 
 <h4>Client requests</h4>
@@ -18,10 +18,10 @@
   <tbody>
   <%@tickets.each do |ticket| %>
       <tr class="clickable_row">
-        <td><%= link_to "##{ticket.id}",ticket %></td>
+        <td><%=link_to "##{ticket.id}",ticket %></td>
         <td><%=ticket.name %></td>
         <td><%=time_ago_in_words(ticket.created_at.in_time_zone("Astana"))%> ago</td>
-        <td>##Stub state##</td>
+        <td><%=ticket.state %></td>
         <td>
           <div class="btn-group">
             <%= link_to "Edit", edit_ticket_path(ticket),class: "btn btn-small btn-info" %>

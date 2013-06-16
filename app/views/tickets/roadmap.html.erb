@@ -1,8 +1,11 @@
-<!--<h1>Tickets</h1>-->
+<h4><i class="icon-align-right" style="margin-top: 4px;"></i> Roadmap</h4>
 
 <div class="navbar">
   <%= link_to(new_ticket_path, class: "btn btn-small") do %>
-      <i class="icon-plus-sign"></i> newTicket
+      <i class="icon-plus-sign"></i> new Ticket
+  <% end %>
+  <%= link_to(tickets_path, class: "btn btn-small") do %>
+      <i class="icon-list"></i> List View
   <% end %>
 </div>
 
@@ -16,6 +19,7 @@
               <input type="hidden" value="<%= ticket.id %>">
               <div class="id">#<%=ticket.id%><span class="tasks">[<%= ticket.tasks.length%>]</span></div>
               <div class="description"><%= ticket.name %></div>
+              <div class="client"><%= ticket.client.name %></div>
             </div>
         <% end %>
       </div>

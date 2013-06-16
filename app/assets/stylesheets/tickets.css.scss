@@ -143,7 +143,7 @@ div.block {
       .id {
         .tasks{
           font-weight: lighter;
-          color: rgb(39, 110, 128);
+          color: rgb(73, 138, 158);
         }
         padding-left: 6px;
         font-weight: bold;
@@ -158,6 +158,16 @@ div.block {
         max-height: 36px;
         overflow: hidden;
         line-height: 12px;
+      }
+      .client{
+        margin: 0 3px;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: capitalize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 20px;
+        color:rgb(0, 55, 116);
       }
     }
     border-radius: 4px;
