@@ -1,0 +1,70 @@
+<% require 'text_controller' %>
+
+<% if defined?(thread) and not thread.removed %>
+<div class="task email_thread">
+  <div class='content'>
+        <input type="hidden" name="thread_id" value="<%=thread.id%>"/>
+        <% thread.email_items.select{|m| not m.prepared? and not m.removed?}.sort_by{|m| m[:created_at]}.each do |mail| %>
+            <div class="message <%= 'new' if mail.new == 1 %>">
+              <input type="hidden" name="email_item_id" value="<%=mail.id%>"/>
+              <img class="avatar" src="/assets/avatars/<%=mail.owner.get_avatar %>">
+              <div class="owner"><%=link_to mail.owner.name, mail.owner%></div>
+              <div class="time"> <%=time_ago_in_words(mail.created_at.in_time_zone("Astana")) %> ago <%= "-" if current_user.has_role? :admin  %> </div>
+              <div class="top_buttons"> &nbsp;
+                <%= link_to "x",{controller: 'mail_threads', action: 'remove_mail', mail: mail.id}, method: :post, style:'color:red;' if current_user.has_role? :admin  %>
+              </div>
+              <div class="text">
+                <%= mail.content.wiki_markup.html_safe  %>
+              </div>
+            </div>
+        <% end %>
+
+        <% thread.email_items.select{|m| m.prepared? and not m.removed?}.sort_by{|m| m[:created_at]}.each do |mail| %>
+            <div class="message prepared">
+              <input type="hidden" name="email_item_id" value="<%=mail.id%>"/>
+              <img class="avatar" src="/assets/avatars/<%=mail.owner.get_avatar %>">
+              <div class="owner"><%=link_to mail.owner.name, user_path(mail.owner)%></div>
+              <div class="time"> <%=time_ago_in_words(mail.created_at.in_time_zone("Astana")) %> ago <%= "-" if current_user.has_role? :admin  %> </div>
+              <div class="top_buttons"> &nbsp;
+                <%= link_to "Edit",'#', class:'edit',style:'color:DarkBlue;' if current_user.has_role? :admin  %>
+                <%= link_to "Send",{controller: 'mail_threads', action: 'deliver', mail: mail.id}, method: :post, style:'color:darkRed;' if current_user.has_role? :admin  %>
+                <%= link_to "x",{controller: 'mail_threads', action: 'remove_mail', mail: mail.id}, method: :post, style:'color:red;' if current_user.has_role? :admin  %>
+              </div>
+              <div class="text result">
+                <%= mail.content.wiki_markup.to_wikitext  %>
+              </div>
+              <div class="text prepare hidden">
+                <%= render 'text/editor', submit: 'Done', text: mail.content, rows: 10%>
+              </div>
+            </div>
+        <% end %>
+    <div class="commenting hidden">
+      <img class="avatar" src="/assets/avatars/<%= current_user.get_avatar %>">
+      <div class="owner only"><%= current_user.name %></div>
+      <div class="text">
+        <%= render 'text/editor', submit: defined?(submit) ? submit : 'Compose'%>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="buttons">
+    <!--<form action="https://accounts.google.com/ServiceLoginAuth" method="POST">-->
+      <!--<input type="hidden" value="masters.tracker@gmail.com" name="Email">-->
+      <!--<input type="hidden" value="As34Df56" name="Passwd">-->
+      <!--<input type="hidden" value="mail" name="service">-->
+      <!--<input type="hidden" value="4719003768797224161" name="dsh">-->
+      <!--<input type="hidden" value="YgbywJpNEOo" name="GALX">-->
+      <!--<input type="hidden" value="js_disabled" name="bgresponse">-->
+      <!--<input type="hidden" value="http://gmail.google.com/gmail" name="continue">-->
+      <!--<input type="submit" name="Sign_in" value="Sign in">-->
+    <!--</form>-->
+    <%=link_to 'Refresh','#' %>
+    <!--<%=link_to 'Compose message', "https://mail.google.com/mail/?ui=2&view=cm&fs=1&tf=1&su=#{thread.tags[0]}&to=#{thread.ticket.client.email}"%>-->
+    <%=link_to 'Compose message','#', class:'new_comment_button'%>
+    <% if current_user.has_role? :admin %>
+        <%=link_to 'Remove', {controller: 'mail_threads', action: 'remove_thread', thread: thread.id}, method: :post, style:'color:red;' %>
+    <% end %>
+  </div>
+  <div class="clr"></div>
+</div>
+<% end %>

@@ -1,0 +1,26 @@
+<!--<h1>Tickets</h1>-->
+
+<div class="navbar">
+  <%= link_to(new_ticket_path, class: "btn btn-small") do %>
+      <i class="icon-plus-sign"></i> newTicket
+  <% end %>
+</div>
+
+<div class="roadmap">
+  <% Ticket::STATES.each do |state| %>
+    <div class="column" style="float: left; width: <%=(940/Ticket::STATES.length)-8%>px">
+      <div class="header"><%= state%></div>
+      <div class="content">
+        <%  @tickets[state].each do |ticket| %>
+            <div class="card">
+              <input type="hidden" value="<%= ticket.id %>">
+              <div class="id">#<%=ticket.id%><span class="tasks">[<%= ticket.tasks.length%>]</span></div>
+              <div class="description"><%= ticket.name %></div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="clr"></div>

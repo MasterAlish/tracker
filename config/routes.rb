@@ -4,6 +4,8 @@ Tracker::Application.routes.draw do
   resources :users
   resources :clients
   match '/tickets/add_property', to: 'tickets#add_property'
+  match '/tickets/change_state', to: 'tickets#change_state'
+  match '/tickets/roadmap', to: 'tickets#roadmap'
   resources :tickets
   match '/tasks/helper', to: 'tasks#helper'
   resources :tasks, only: [:new,:create,:update]
@@ -11,9 +13,15 @@ Tracker::Application.routes.draw do
   resources :attachments
   match '/comments/update', to: 'comments#update'
 
-  root :to => "home#index"
+  root :to => 'tickets#roadmap'
   match '/text/markup', to: 'text#markup', via: :post
 
+  match '/mails/refresh', to: 'mail_threads#refresh'
+  match '/mails/remove_mail', to: 'mail_threads#remove_mail', via: :post
+  match '/mails/remove_thread', to: 'mail_threads#remove_thread', via: :post
+  match '/mails/compose', to: 'mail_threads#compose', via: :post
+  match '/mails/edit', to: 'mail_threads#edit', via: :post
+  match '/mails/deliver', to: 'mail_threads#deliver', via: :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

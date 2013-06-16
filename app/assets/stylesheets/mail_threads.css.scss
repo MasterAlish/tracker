@@ -1,0 +1,26 @@
+// Place all the styles related to the MailThreads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.email_thread{
+  .content{
+    width:100% !important;
+    .message{
+      margin-right: 3px;
+      border-radius: 6px;
+      .text{
+        font-size: 12px;
+        p{
+          font-size: 12px !important;
+          line-height: 11px !important;
+        }
+      }
+      &.prepared{
+        background-color: #ffc4b1;
+      }
+      &.new{
+        background-color: #c8ffbb;
+      }
+    }
+  }
+}

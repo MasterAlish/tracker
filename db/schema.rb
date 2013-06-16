@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615103317) do
+ActiveRecord::Schema.define(:version => 20130616111312) do
 
   create_table "access_credentials", :force => true do |t|
     t.text     "properties"
@@ -44,14 +44,16 @@ ActiveRecord::Schema.define(:version => 20130615103317) do
   end
 
   create_table "email_items", :force => true do |t|
-    t.string   "content"
-    t.boolean  "removed"
+    t.text     "content"
+    t.boolean  "removed",         :default => false
     t.string   "owner_type"
     t.integer  "owner_id"
     t.integer  "email_thread_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "uid"
+    t.boolean  "prepared",        :default => false
+    t.integer  "new"
   end
 
   create_table "email_threads", :force => true do |t|
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130615103317) do
     t.datetime "updated_at", :null => false
     t.boolean  "removed"
     t.text     "tags"
+    t.integer  "ticket_id"
   end
 
   create_table "properties", :force => true do |t|
@@ -120,8 +123,9 @@ ActiveRecord::Schema.define(:version => 20130615103317) do
     t.string   "name"
     t.integer  "client_id"
     t.integer  "site"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "state",      :default => "New"
   end
 
   create_table "users", :force => true do |t|

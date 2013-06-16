@@ -2,22 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 // ** HEADER **
 
-#ticket{
+#ticket {
   font-weight: bold;
   float: left;
   margin-right: 10px;
   padding-top: 10px;
   color: #444;
   font-size: 32px;
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
 }
 
-.ticket-description{
+.ticket-description {
   line-height: 130%;
   padding-top: 6px;
   vertical-align: middle;
@@ -27,96 +26,145 @@
   width: 550px;
 }
 
-a.updown{
+a.updown {
   float: right;
   position: absolute;
-  top:7px;
+  top: 7px;
   right: 5px;
 }
 
-
-.left_side{
+.left_side {
   float: left;
   width: 350px;
 }
 
-.right_side{
+.right_side {
   float: left;
   width: 480px;
 }
 
 /* Properties */
 .property {
-  padding-bottom:10px;
-  label{
+  padding-bottom: 10px;
+  label {
     font-weight: bold;
   }
 }
 
-.property_remove{
+.property_remove {
   display: inline-block;
-  a{
+  a {
     padding-top: 0;
   }
 }
-.property_names{
+
+.property_names {
   text-align: right;
   display: inline-block;
-  input{
+  input {
     width: 100px;
     text-align: right;
     margin-bottom: 4px;
     height: 15px;
-    &:last-of-type{
-      margin-bottom:0;
+    &:last-of-type {
+      margin-bottom: 0;
     }
   }
 }
 
-.property_fields{
+.property_fields {
   text-align: left;
   display: inline-block;
   padding-left: 5px;
-  border-left:1px solid #999;
-  input{
-    width:250px;
+  border-left: 1px solid #999;
+  input {
+    width: 250px;
     text-align: left;
     margin-bottom: 4px;
     height: 15px;
-    &:last-of-type{
-      margin-bottom:0;
+    &:last-of-type {
+      margin-bottom: 0;
     }
   }
 }
 
-.legend_buttons{
+.legend_buttons {
   float: right;
+  margin-left: 10px;
 }
 
-div.block{
+div.block {
   overflow: hidden;
   padding: 5px;
   background-color: #f9f9f9;
   border-radius: 5px;
   border: 1px solid #bbb;
   margin: 3px;
-  .hide_button{
-    float:right;
+  .hide_button {
+    float: right;
     cursor: pointer;
   }
 }
 
-.clickable_row{
+.clickable_row {
   cursor: pointer;
 }
 
-.ticket_content{
-  .left{
+.ticket_content {
+  .left {
     width: 40%;
     float: left;
   }
-  .right{
+  .right {
     width: 60%;
     float: left;
   }
+}
+
+.roadmap {
+  .column {
+    .header {
+      background: url("tag.png") no-repeat;
+      padding-left: 17px;
+      font-size: 12px;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 20px;
+    }
+    .card {
+      background-color: white;
+      width: 92%;
+      margin: 3px 4%;
+      margin-bottom: 6px;
+      border-radius: 3px;
+      cursor: pointer;
+      box-shadow: 0 0 3px 0px #363636;
+      .id {
+        .tasks{
+          font-weight: lighter;
+          color: rgb(39, 110, 128);
+        }
+        padding-left: 6px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .description {
+        margin-top: 2px;
+        font-size: 12px;
+        padding: 0 3px;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        max-height: 36px;
+        overflow: hidden;
+        line-height: 12px;
+      }
+    }
+    border-radius: 4px;
+    background-color: #ebf2ed;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: 1px solid gray;
+  }
+  padding-bottom: 40px;
 }

@@ -70,7 +70,7 @@ function initSpentTimeEnteringProcess(){
 }
 
 function initEditButton(){
-    $(".editing>a").click(function(){
+    $(".top_buttons>.edit").click(function(){
         helpers.hideAllEditors();
         $(this).parents('.message').children('.result').addClass('hidden');
         $(this).parents('.message').children('.prepare').removeClass('hidden');
@@ -91,6 +91,12 @@ var helpers = {
     },
     getCommentIdByInnerElement: function(el){
         return el.parents('.message').children('input').first().val();
+    },
+    getMailIdByInnerElement: function(el){
+        return el.parents('.message').children('input').first().val();
+    },
+    getThreadIdByInnerElement: function(el){
+        return el.parents('.email_thread').children('.content').children('input').first().val();
     },
     hideAllUpdatingCommentsAndShowComments:function(){
         $(".text.prepare").addClass('hidden');

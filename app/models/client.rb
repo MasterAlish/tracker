@@ -7,4 +7,8 @@ class Client < ActiveRecord::Base
   def self.default
      Client.find_by_email(ENV['DEFAULT_CLIENT_EMAIL'])
   end
+
+  def get_avatar
+    "#{(Random.new_seed%8+1)}.png"
+  end
 end

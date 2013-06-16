@@ -1,14 +1,22 @@
 <% provide(:ticket_header,"100px") %>
-<legend><b>#<span id="ticket_id"><%= @ticket.id%></span> <%= @ticket.name %></b>
+<legend><b>#<span id="ticket_id"><%= @ticket.id%></span> <%= @ticket.name %></b><span style="color:#0088cc;"> (<%=@ticket.state%>)</span>
   <div class="btn-group legend_buttons">
     <%=link_to "Edit", edit_ticket_path(@ticket), class: "btn btn-small" %>
     <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <!-- dropdown menu links -->
+      <% Ticket::TRANSITIONS[Ticket::ALL].each do |transit| %>
+          <%=link_to transit[:name], {controller:'tickets', action: 'change_state', id: @ticket.id, state: transit[:to]}, class: "btn-small" %>
+      <% end %>
     </ul>
   </div>
+  <div class="btn-group legend_buttons">
+    <% Ticket::TRANSITIONS[@ticket.state].each do |transit| %>
+        <%=link_to transit[:name], {controller:'tickets', action: 'change_state', id: @ticket.id, state: transit[:to]}, class: "btn btn-small" %>
+    <% end %>
+  </div>
+
 </legend>
 
 <div class="ticket_content">

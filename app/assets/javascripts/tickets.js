@@ -2,6 +2,7 @@ $(document).ready(function(){
     createNewFunctions();
     initPropertiesBehaviour();
     mailsHideButton();
+    $(".hide_button").click();
 });
 
 function createNewFunctions(){

@@ -1,9 +1,17 @@
 <div class="block">
   <i class="icon-chevron-left hide_button"></i>
   <div class="content">
-    <h1>Email Threads Stub </h1>
-    <p>
-      Lorem ipsum dolor si amet
-    </p>
+    <% @ticket.email_threads.sort_by{|i| i.created_at}.each do |thread| %>
+        <%= render 'mails/thread', thread: thread %>
+    <% end %>
+    <% if @ticket.email_threads.length == 0 %>
+        <p style="margin-left: 20px;">
+          <b>No Emails.</b><br/>
+          Click "Synchronize" to synchronize with Gmail
+          <b><%= @ticket.client.email %></b>
+        </p>
+    <% end %>
+    <div class="clr"></div>
+    <%= link_to 'Synchronize', {controller: "mail_threads", action:"refresh", ticket: @ticket.id}, class: 'btn btn-primary btn-small' %>
   </div>
 </div>

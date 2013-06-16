@@ -1,8 +1,8 @@
 class CreateEmailItems < ActiveRecord::Migration
   def change
     create_table :email_items do |t|
-      t.string :content
-      t.boolean :removed
+      t.text :content
+      t.boolean :removed, default: FALSE
       t.string :owner_type
       t.integer :owner_id
       t.integer :email_thread_id

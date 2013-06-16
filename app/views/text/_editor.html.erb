@@ -69,6 +69,40 @@
               }
           });
           return false;
+      }else if($(this).val()=='Compose'){
+          $.ajax({
+              dataType:'script',
+              url:'/mails/compose',
+              method: 'POST',
+              data: {'text':$(this).parents('form').children('textarea').val(),
+                  'thread':helpers.getThreadIdByInnerElement($(this))},
+              statusCode: {
+                  200: function(data) {
+                      location.reload();
+                  },
+                  default: function(){
+                      alert("Server Error!");
+                  }
+              }
+          });
+          return false;
+      }else if($(this).val()=='Done'){
+          $.ajax({
+              dataType:'script',
+              url:'/mails/edit',
+              method: 'POST',
+              data: {'text':$(this).parents('form').children('textarea').val(),
+                  'mail':helpers.getMailIdByInnerElement($(this))},
+              statusCode: {
+                  200: function(data) {
+                      location.reload();
+                  },
+                  default: function(){
+                      alert("Server Error!");
+                  }
+              }
+          });
+          return false;
       }
   })
 </script>

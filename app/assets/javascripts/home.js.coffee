@@ -4,6 +4,7 @@
 $(document).ready ->
   initUpDownHeaderButton()
   setClickableRowClick()
+  initRoadMapCardClick()
   window.chevron_height = $("header .properties").height()
   $("a.updown").click()
 
@@ -30,6 +31,11 @@ initUpDownHeaderButton = ->
       $(this).children("i").addClass "icon-chevron-up"
       setTimeout (->$("header .properties").removeClass "hidden"),200
     return false
+
+initRoadMapCardClick = ->
+  $('.roadmap .card').click ->
+    ticket = $(this).children('input').first().val()
+    window.location.href = '/tickets/'+ticket
 
 setClickableRowClick = ->
   $(".clickable_row").click ->

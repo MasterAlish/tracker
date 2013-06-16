@@ -6,6 +6,12 @@ class String
   end
 end
 
+class NilClass
+  def wiki_markup
+    ''
+  end
+end
+
 class TextController < ApplicationController
   def markup
     render inline: (params[:text_for_markup]||'').wiki_markup.to_wikitext
