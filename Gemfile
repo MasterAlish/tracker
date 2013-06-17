@@ -28,7 +28,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'xray-rails'
   gem 'annotate', '2.5.0'
   gem 'railroady'
 end

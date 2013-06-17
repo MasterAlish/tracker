@@ -21,6 +21,16 @@ class ClientsController < ApplicationController
     end
   end
 
+  def edit
+    @client = Client.find(params[:id])
+    render 'new'
+  end
+
+  def update
+    @client = Client.update(params[:id], name: params[:client][:name], email: params[:client][:email])
+    redirect_to @client
+  end
+
   def destroy
     Client.delete(params[:id])
     redirect_to clients_path

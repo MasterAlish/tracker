@@ -91,7 +91,7 @@ class MailThreadsController < ApplicationController
           gsub(/\n\n/,'<br>').
           gsub(/(\n|\r|<br>){2,}$/, '').
           gsub(/<\/p>\s*<br>\s*<p>/,'</p><p>').
-          gsub(/--\s*/,'<br><i>') + '</i>'
+          gsub(/--\s*/,'<br>') + ''
       thread.email_items.new(new: 0,content: plain_part.gsub(/On (Sat|Sun|Mon|Tue|Wed|Thu|Fri), (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d+, \d+ at \d+:\d+ (PM|AM), [^(]*wrote:.*$/, ''), owner: owner, uid: mail.uid, created_at: DateTime.parse(mail.date.to_s))
       thread.save
     end

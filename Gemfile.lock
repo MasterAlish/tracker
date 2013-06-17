@@ -235,9 +235,6 @@ GEM
     will_paginate (3.0.3)
     xpath (0.1.4)
       nokogiri (~> 1.3)
-    xray-rails (0.1.5)
-      coffee-rails
-      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
@@ -277,4 +274,3 @@ DEPENDENCIES
   uglifier (= 1.2.3)
   wikitext (= 3.1)
   will_paginate (= 3.0.3)
-  xray-rails

@@ -21,7 +21,7 @@
       <div class="properties hidden">
           <div class="clr"></div>
         <div class="part">
-          <div><b>Client:</b> <%= link_to @ticket.client.name, client_path(@ticket.client) %></B></div>
+          <div><b>Client:</b> <%= link_to @ticket.client.name, client_path(@ticket.client) %></div>
           <% @properties.each do |property|%>
               <div><b><%=property[:name]%><%=':' unless property[:format].blank? %></b> <%=property[:format]%></div>
           <% end %>
