@@ -3,12 +3,32 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+load "#{Rails.root}/db/seeds.rb"
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+Capybara.default_driver = :selenium
+
+Capybara.default_wait_time = 5
+
+class Capybara::Selenium::Driver
+  def setup
+    @s = new_session
+  end
+
+  def teardown
+    @s.driver.browser.quit
+  end
+end
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -35,4 +55,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+end
+
+def create_user
+  User.create(name: 'Alisher', email: 'masteraalish@gmail.com', password: 'alisher12', initials: 'AA')
+end
+
+def create_admin
+  User.all[0]
 end

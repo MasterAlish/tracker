@@ -71,4 +71,8 @@
 
 . Change tasks desing to image 
 . Make colors less
+
+. Move tasks into spoiler
+	. Show only part of test if there a lot of text
+
 + Sort tasks by created_at

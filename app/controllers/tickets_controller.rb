@@ -89,7 +89,7 @@ class TicketsController < ApplicationController
     redirect_to @ticket
   end
 
-  private
+  private unless 'test' == Rails.env
 
     def collect_ticket_params
       $client = Client.find(params[:ticket_client_id])
