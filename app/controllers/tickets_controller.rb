@@ -89,34 +89,33 @@ class TicketsController < ApplicationController
     redirect_to @ticket
   end
 
-  private unless 'test' == Rails.env
 
-    def collect_ticket_params
-      $client = Client.find(params[:ticket_client_id])
-      $properties =[]
-      params[:property_name].each do |id,property_field_names|
-        property = Property.new(name: params[:property_value][id]['1'].squeeze(' ').strip)
-        property_field_names.each do |num,name|
-          property.data[name]=params[:property_value][id][num] unless name.eql? 'name'
-        end
-        $properties<<property
-      end unless  params[:property_name].nil?
-    end
-
-    def format_properties
-      @properties=[]
-      @ticket.properties.each do |property|
-        @properties << {name: property.name, format: format(property.data)}
+  def collect_ticket_params
+    $client = Client.find(params[:ticket_client_id])
+    $properties =[]
+    params[:property_name].each do |id,property_field_names|
+      property = Property.new(name: params[:property_value][id]['1'].squeeze(' ').strip)
+      property_field_names.each do |num,name|
+        property.data[name]=params[:property_value][id][num] unless name.eql? 'name'
       end
-    end
+      $properties<<property
+    end unless  params[:property_name].nil?
+  end
 
-    def format(hash)
-      format = hash['format']
-      hash.each {|key,value| format.gsub! /\{#{key}\}/, value}
-      format
+  def format_properties
+    @properties=[]
+    @ticket.properties.each do |property|
+      @properties << {name: property.name, format: format(property.data)}
     end
+  end
 
-    def make_old_new_email_items_for (ticket)
-      ticket.email_threads.each{|t| t.email_items.each{|i| i.new+=1; i.save }}
-    end
+  def format(hash)
+    format = hash['format']
+    hash.each {|key,value| format.gsub! /\{#{key}\}/, value}
+    format
+  end
+
+  def make_old_new_email_items_for (ticket)
+    ticket.email_threads.each{|t| t.email_items.each{|i| i.new+=1; i.save }}
+  end
 end

@@ -7,8 +7,9 @@ describe "Login" do
     end
 
     it "should show login page" do
-      page.should have_content('Forgot your password?')
       page.should have_xpath("//input[@id='user_email']")
+      page.should have_xpath("//input[@id='user_password']")
+      page.should have_content('Forgot your password?')
     end
 
     it 'should show roadmap after sign_in' do
