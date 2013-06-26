@@ -10,22 +10,25 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all.sort_by{|t| t[:created_at]}.reverse
   end
 
-  def search
-
-  end
-
   def roadmap
     tickets = Ticket.all.sort_by{|t| t[:created_at]}.reverse
-    @tickets = {}
-    @invalid_tickets = []
-    Ticket::STATES.each{|s| @tickets[s]=[]}
-    tickets.each do |ticket|
-      if ticket.state == Ticket::INVALID
-        @invalid_tickets<<ticket
-      else
-        @tickets[ticket.state]<<ticket
-      end
+    classify tickets
+  end
+
+  def search
+    tickets = find_tickets_by keywords
+    tickets = sort_and_remove_duplicate tickets
+    if params['view'].eql?('list')
+      @tickets = tickets
+      render 'index'
+    else
+      classify tickets
+      render 'roadmap'
     end
+  end
+
+  def sort_and_remove_duplicate(tickets)
+    tickets.sort_by{|t| t[:created_at]}.reverse.uniq
   end
 
   def new
@@ -73,6 +76,27 @@ class TicketsController < ApplicationController
     redirect_to tickets_path
   end
 
+  def keywords
+    params[:keywords].split | []
+  end
+
+  def find_tickets_by(keywords)
+    if keywords.length == 0
+      Ticket.all
+    else
+      tickets = []
+      keywords.each do |keyword|
+        tickets = tickets.concat Ticket.where('name LIKE ?', "%#{keyword}%").all
+        clients = Client.where('name LIKE ?', "%#{keyword}%").all
+        tickets = tickets.concat Ticket.where(client_id: clients).all
+        comments = Comment.where('content LIKE ?', "%#{keyword}%").all
+        ticket_ids = comments.map{|c| c.task}.map{|t| t.ticket.id}.uniq
+        tickets = tickets.concat Ticket.find(ticket_ids)
+      end
+      tickets
+    end
+  end
+
   def change_state
     @ticket = Ticket.find(params[:id])
     new_state_name = params[:state]
@@ -95,6 +119,18 @@ class TicketsController < ApplicationController
     redirect_to @ticket
   end
 
+  def classify (tickets)
+    @tickets = {}
+    @invalid_tickets = []
+    Ticket::STATES.each{|s| @tickets[s]=[]}
+    tickets.each do |ticket|
+      if ticket.state == Ticket::INVALID
+        @invalid_tickets<<ticket
+      else
+        @tickets[ticket.state]<<ticket
+      end
+    end
+  end
 
   def collect_ticket_params
     $client = Client.find(params[:ticket_client_id])

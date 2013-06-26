@@ -49,9 +49,11 @@ class TasksController < ApplicationController
 
     def test_accept(task_id)
       task = Task.find(task_id)
-      task.tested_by = current_user
-      task.save
-      redirect_to task.ticket
+      if current_user.has_role? :tester
+        task.tested_by = current_user
+        task.save
+        redirect_to task.ticket
+      end
     end
 
     def test_reject(task_id)

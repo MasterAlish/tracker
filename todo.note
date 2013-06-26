@@ -49,15 +49,20 @@
 + Add Client show action with all his tickets
 + Add Client index, edit, delete actions
 
-. Add new ticket button on the Client's page
+?################################################################
+
++ Add new ticket button on the Client's page
 . Only tester can accept or reject task
+. TESTSSSSSS
+
+?################################################################
 
 . Add keyboard shortcuts to Quotation selected text and other useful shorcuts
 . Add buttons for Text Editor
 
 . Search tickets feature
-	. Fast search
-	. Extended search
+	+ Fast search
+	. Filter tickets
 
 . Ticket type
 . Task type

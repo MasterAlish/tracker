@@ -12,6 +12,7 @@
     <%=form_tag(tickets_search_url, method: :post, class:   "navbar-search pull-left") do %>
         <%= text_field_tag('keywords', '', class:"ticket-search-keywords", placeholder:"Search tickets") %>
         <%= submit_tag("",class:"ticket-search-button") %>
+        <input type="hidden" name="view" value="list">
     <% end %>
   </div>
 </div>
