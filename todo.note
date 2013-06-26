@@ -48,6 +48,10 @@
 	. Attach files when sending
 + Add Client show action with all his tickets
 + Add Client index, edit, delete actions
+
+. Add new ticket button on the Client's page
+. Only tester can accept or reject task
+
 . Add keyboard shortcuts to Quotation selected text and other useful shorcuts
 . Add buttons for Text Editor
 

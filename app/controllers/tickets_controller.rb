@@ -1,13 +1,17 @@
 class TicketsController < ApplicationController
   include ApplicationHelper
   include TicketsHelper
-  before_filter :store_location, except: [:edit, :update]
+  before_filter :store_location, except: [:edit, :update, :search]
   before_filter :signed_in_user
   before_filter :can_modify,   only: [:edit, :update]
   before_filter :is_admin?, only: [:destroy]
 
   def index
     @tickets = Ticket.all.sort_by{|t| t[:created_at]}.reverse
+  end
+
+  def search
+
   end
 
   def roadmap
@@ -25,7 +29,9 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new(client: Client.default)
+    client_id = params[:client] || Client.default.id
+    client = Client.find(client_id)
+    @ticket = Ticket.new(client: client)
   end
 
   def create

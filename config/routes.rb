@@ -6,6 +6,7 @@ Tracker::Application.routes.draw do
   match '/tickets/add_property', to: 'tickets#add_property'
   match '/tickets/change_state', to: 'tickets#change_state'
   match '/tickets/roadmap', to: 'tickets#roadmap'
+  match '/tickets/search', to: 'tickets#search', via: :post
   resources :tickets
   match '/tasks/helper', to: 'tasks#helper'
   resources :tasks, only: [:new,:create,:update]

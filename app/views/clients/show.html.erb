@@ -4,7 +4,11 @@
 </legend>
 
 <h4>Client requests</h4>
-<br>
+<div class="navbar">
+  <%= link_to({controller: :tickets, action: :new, client: @client.id}, class: "btn btn-small") do %>
+      <i class="icon-plus-sign"></i> new Ticket
+  <% end %>
+</div>
 <table class="table-striped table table-hover table-condensed">
   <thead>
   <tr>

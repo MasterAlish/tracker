@@ -2,11 +2,18 @@
 
 <div class="navbar">
   <%= link_to(new_ticket_path, class: "btn btn-small") do %>
-      <i class="icon-plus-sign"></i> newTicket
+      <i class="icon-plus-sign"></i> new Ticket
   <% end %>
   <%= link_to(root_path, class: "btn btn-small") do %>
       <i class="icon-align-right"></i> Roadmap
   <% end %>
+
+  <div class="ticket-search pull-right">
+    <%=form_tag(tickets_search_url, method: :post, class:   "navbar-search pull-left") do %>
+        <%= text_field_tag('keywords', '', class:"ticket-search-keywords", placeholder:"Search tickets") %>
+        <%= submit_tag("",class:"ticket-search-button") %>
+    <% end %>
+  </div>
 </div>
 
 <table class="table-striped table table-hover table-condensed">

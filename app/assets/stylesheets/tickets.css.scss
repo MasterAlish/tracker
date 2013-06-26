@@ -178,3 +178,23 @@ div.block {
   }
   padding-bottom: 40px;
 }
+
+.ticket-search{
+  .ticket-search-keywords{
+    height: 13px !important;
+    width: 147px;
+  }
+  .ticket-search-button{
+    background: url("");
+    width: 25px;
+    height: 25px;
+    border: 0;
+    background-position: -48px 0;
+    display: inline-block;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url(/assets/glyphicons-halflings.png);
+    background-repeat: no-repeat;
+    margin-top: -3px;
+  }
+}
